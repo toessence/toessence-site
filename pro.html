@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>toEssence Pro — необмежені Filters</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080a0f;--bg2:#0d1018;--border:rgba(255,255,255,.06);--text:#d8d8d0;--muted:#52596a;--green:#22c55e;--gdim:rgba(34,197,94,.08);--gborder:rgba(34,197,94,.22)}
+html{-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
+a{text-decoration:none;color:inherit}
+
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff}
+.logo em{color:var(--green);font-style:normal}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.nav-back:hover{color:var(--text)}
+
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+.card{background:var(--bg2);border:1px solid var(--gborder);border-radius:16px;padding:48px;max-width:480px;width:100%;text-align:center}
+
+.badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);border:1px solid var(--gborder);padding:5px 14px;border-radius:16px;display:inline-block;margin-bottom:24px}
+h1{font-family:'Playfair Display',serif;font-size:40px;font-weight:400;color:#fff;line-height:1.1;margin-bottom:8px}
+.price-sub{font-size:14px;color:var(--muted);margin-bottom:32px;line-height:1.6}
+
+.price-display{background:rgba(34,197,94,.06);border:1px solid var(--gborder);border-radius:10px;padding:20px;margin-bottom:28px}
+.price-amount{font-family:'Playfair Display',serif;font-size:48px;color:#fff;line-height:1}
+.price-period{font-size:13px;color:var(--muted);margin-top:4px}
+.price-note{font-size:11px;color:rgba(34,197,94,.6);margin-top:8px;font-family:'IBM Plex Mono',monospace;letter-spacing:.05em}
+
+.features{text-align:left;display:flex;flex-direction:column;gap:10px;margin-bottom:32px}
+.feature{display:flex;gap:10px;align-items:center;font-size:13px;color:rgba(255,255,255,.7)}
+.feature::before{content:'✓';color:var(--green);font-size:12px;flex-shrink:0;font-weight:600}
+
+.checkout-btn{display:block;width:100%;padding:15px;background:var(--green);color:#080a0f;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:600;letter-spacing:.06em;border-radius:8px;border:none;cursor:pointer;transition:opacity .18s,transform .1s;margin-bottom:12px}
+.checkout-btn:hover{opacity:.9;transform:translateY(-1px)}
+
+.secure-note{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.05em}
+.secure-note span{color:rgba(34,197,94,.5)}
+
+.country-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:24px}
+.cp{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center}
+.cp-flag{font-size:16px;margin-bottom:3px}
+.cp-price{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text)}
+.cp-country{font-size:10px;color:var(--muted)}
+
+footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify-content:space-between;align-items:center}
+.fc{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.15)}
+.fl a{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted);margin-left:16px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">to<em>E</em>ssence</div>
+  <a class="nav-back" href="/">← повернутись</a>
+</nav>
+
+<div class="main">
+  <div class="card">
+    <div class="badge">Pro версія</div>
+    <h1>Необмежені<br>Filters ∞</h1>
+    <p class="price-sub">Справедлива ціна — 0.2% від мінімальної зарплати вашої країни. Ціна визначається автоматично.</p>
+
+    <div class="country-prices">
+      <div class="cp"><div class="cp-flag">🇺🇦</div><div class="cp-price">60 грн</div><div class="cp-country">Україна</div></div>
+      <div class="cp"><div class="cp-flag">🇩🇪</div><div class="cp-price">8€</div><div class="cp-country">Німеччина</div></div>
+      <div class="cp"><div class="cp-flag">🇺🇸</div><div class="cp-price">$10</div><div class="cp-country">США</div></div>
+      <div class="cp"><div class="cp-flag">🇬🇧</div><div class="cp-price">£7</div><div class="cp-country">Великобр.</div></div>
+      <div class="cp"><div class="cp-flag">🇵🇱</div><div class="cp-price">12 zł</div><div class="cp-country">Польща</div></div>
+      <div class="cp"><div class="cp-flag">🌍</div><div class="cp-price">$3</div><div class="cp-country">Інші</div></div>
+    </div>
+
+    <div class="price-display">
+      <div class="price-amount" id="priceAmount">...<span style="font-size:22px;color:var(--muted)" id="priceCurrency"></span></div>
+      <div class="price-period">на місяць · скасування будь-коли</div>
+      <div class="price-note" id="priceNote">Визначаємо ціну для вашої країни...</div>
+    </div>
+
+    <div class="features">
+      <div class="feature">Необмежені Filters — без добових лімітів</div>
+      <div class="feature">Новини, YouTube, маркетплейси</div>
+      <div class="feature">17+ мов автоматично</div>
+      <div class="feature">Автоматичне розблокування після оплати</div>
+      <div class="feature">Скасування підписки в будь-який момент</div>
+    </div>
+
+    <button class="checkout-btn" id="checkoutBtn" onclick="startCheckout()">
+      Оформити Pro підписку →
+    </button>
+    <div class="secure-note">🔒 Безпечна оплата через <span>Stripe</span> · Картка, Google Pay, Apple Pay</div>
+  </div>
+</div>
+
+<footer>
+  <div class="fc">© 2026 toessence.net</div>
+  <div class="fl">
+    <a href="/privacy">Конфіденційність</a>
+    <a href="/terms">Умови</a>
+  </div>
+</footer>
+
+<script>
+// Get UUID from URL params (passed from extension)
+const params = new URLSearchParams(location.search);
+const uuid = params.get('uuid') || '';
+const country = params.get('country') || '';
+
+// Country pricing map
+const pricing = {
+  UA: { amount: '60', currency: 'грн', note: 'Ціна для України · 0.2% від мінімальної з/п', stripePrice: 'price_UA_PLACEHOLDER' },
+  DE: { amount: '8', currency: '€', note: 'Preis für Deutschland', stripePrice: 'price_DE_PLACEHOLDER' },
+  FR: { amount: '8', currency: '€', note: 'Prix pour la France', stripePrice: 'price_FR_PLACEHOLDER' },
+  GB: { amount: '7', currency: '£', note: 'Price for United Kingdom', stripePrice: 'price_GB_PLACEHOLDER' },
+  US: { amount: '10', currency: '$', note: 'Price for United States', stripePrice: 'price_US_PLACEHOLDER' },
+  CA: { amount: '9', currency: 'CA$', note: 'Price for Canada', stripePrice: 'price_CA_PLACEHOLDER' },
+  AU: { amount: '9', currency: 'AU$', note: 'Price for Australia', stripePrice: 'price_AU_PLACEHOLDER' },
+  PL: { amount: '12', currency: 'zł', note: 'Cena dla Polski', stripePrice: 'price_PL_PLACEHOLDER' },
+};
+
+const p = pricing[country] || { amount: '3', currency: '$', note: 'Price for your region', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
+
+document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '</span>';
+document.getElementById('priceNote').textContent = p.note;
+
+async function startCheckout() {
+  const btn = document.getElementById('checkoutBtn');
+  btn.textContent = 'Перенаправляємо на оплату...';
+  btn.disabled = true;
+
+  try {
+    // Call your backend to create Stripe Checkout session
+    const resp = await fetch('https://YOUR_PROJECT.supabase.co/functions/v1/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ uuid, country, priceId: p.stripePrice }),
+    });
+    const data = await resp.json();
+    if (data.url) {
+      window.location.href = data.url;
+    } else {
+      throw new Error('No checkout URL');
+    }
+  } catch (e) {
+    btn.textContent = 'Оформити Pro підписку →';
+    btn.disabled = false;
+    alert('Помилка. Спробуйте ще раз.');
+  }
+}
+</script>
+</body>
+</html>

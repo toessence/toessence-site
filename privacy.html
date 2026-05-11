@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Конфіденційність — toEssence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080a0f;--bg2:#0d1018;--border:rgba(255,255,255,.06);--text:#d8d8d0;--muted:#52596a;--green:#22c55e}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300}
+a{color:var(--green);text-decoration:none}
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff}
+.logo em{color:var(--green);font-style:normal}
+.content{max-width:680px;margin:0 auto;padding:60px 24px}
+h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:#fff;margin-bottom:8px}
+.date{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-bottom:48px}
+h2{font-size:16px;font-weight:500;color:#fff;margin:32px 0 10px}
+p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:12px}
+ul{padding-left:20px;margin-bottom:12px}
+li{font-size:14px;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:4px}
+footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav><div class="logo">to<em>E</em>ssence</div><a href="/" style="font-family:monospace;font-size:10px;color:var(--muted)">← головна</a></nav>
+<div class="content">
+  <h1>Політика конфіденційності</h1>
+  <div class="date">Оновлено: травень 2026</div>
+
+  <h2>Що ми збираємо</h2>
+  <p>toEssence розроблений з максимальним захистом приватності. На Free плані ми збираємо мінімум:</p>
+  <ul>
+    <li>Анонімний UUID (генерується локально у вашому браузері)</li>
+    <li>Країна (визначається за IP для локалізації ціни)</li>
+    <li>Тип використаного Filter (новини / YouTube / відгуки)</li>
+    <li>Дата і час запиту</li>
+  </ul>
+  <p>Ми <strong>не збираємо</strong>: ім'я, email, точну IP-адресу (тільки хеш), URL сторінок які ви відвідуєте, вміст статей або відео.</p>
+
+  <h2>Як використовуємо дані</h2>
+  <p>Дані використовуються виключно для:</p>
+  <ul>
+    <li>Підрахунку денного ліміту Filters (50 безкоштовних)</li>
+    <li>Анонімної статистики використання (кількість активних користувачів, популярні функції)</li>
+    <li>Визначення ціни Pro версії відповідно до вашої країни</li>
+  </ul>
+
+  <h2>Pro підписка</h2>
+  <p>При оформленні Pro підписки Stripe збирає ваш email і платіжні дані. toEssence зберігає тільки ваш UUID і статус підписки. Email зберігається у Stripe — ми не маємо до нього доступу.</p>
+
+  <h2>Треті сторони</h2>
+  <ul>
+    <li><strong>Groq AI</strong> — обробляє текст статей для генерації тез. Groq не зберігає запити після обробки.</li>
+    <li><strong>Supabase</strong> — база даних для зберігання анонімної статистики (EU регіон).</li>
+    <li><strong>Stripe</strong> — обробка платежів. Дані картки ніколи не проходять через наші сервери.</li>
+  </ul>
+
+  <h2>Зберігання даних</h2>
+  <p>Детальні логи Filters зберігаються 90 днів, після чого автоматично видаляються. Агрегована статистика зберігається безстроково.</p>
+
+  <h2>Ваші права</h2>
+  <p>Ви можете запросити видалення всіх ваших даних, написавши на <a href="mailto:hello@toessence.net">hello@toessence.net</a> з вашим UUID (знаходиться в налаштуваннях розширення).</p>
+
+  <h2>Контакт</h2>
+  <p>Питання щодо приватності: <a href="mailto:hello@toessence.net">hello@toessence.net</a></p>
+</div>
+<footer>© 2026 toessence.net · інфогігієна для всіх</footer>
+</body>
+</html>
