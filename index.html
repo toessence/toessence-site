@@ -2,81 +2,444 @@
 <html lang="uk">
 <head>
 <meta charset="UTF-8">
-<title>toEssence</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="toEssence — AI фільтр для інтернету. Наводь курсор на заголовки, відео та відгуки — отримуй суть без кліків.">
+<title>toEssence — інфогігієна</title>
+<link rel="icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{width:260px;background:#080a0f;color:#d8d8d0;font-family:'IBM Plex Sans',-apple-system,sans-serif;font-size:13px}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.header{padding:14px 16px 12px;border-bottom:1px solid rgba(255,255,255,.06)}
-.logo{font-family:Georgia,serif;font-size:19px;font-weight:700;color:#fff}
-.logo span{color:#22c55e}
+  :root {
+    --bg: #080a0f;
+    --bg2: #0d1018;
+    --border: rgba(255,255,255,.06);
+    --text: rgba(255,255,255,.82);
+    --muted: rgba(255,255,255,.35);
+    --green: #22c55e;
+    --green-dim: rgba(34,197,94,.1);
+    --green-border: rgba(34,197,94,.25);
+  }
 
-.block{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
-.lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px}
-.big{font-family:Georgia,serif;font-size:34px;color:#fff;line-height:1;margin-bottom:6px}
-.big sub{font-size:14px;color:rgba(255,255,255,.3);font-family:inherit}
-.bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:5px}
-.fill{height:100%;background:#22c55e;border-radius:2px;transition:width .3s}
-.note{font-size:11px;color:rgba(255,255,255,.3)}
+  html { scroll-behavior: smooth; }
 
-.pro-row{display:flex;align-items:center;gap:8px}
-.pro-dot{width:6px;height:6px;border-radius:50%;background:#22c55e}
-.pro-txt{font-size:12px;color:rgba(34,197,94,.85)}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
 
-.upgrade-btn{display:block;width:100%;padding:9px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.28);border-radius:7px;color:#22c55e;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.05em;text-align:center;text-decoration:none;transition:background .18s}
-.upgrade-btn:hover{background:rgba(34,197,94,.18)}
-.price-note{font-size:10px;color:rgba(255,255,255,.22);text-align:center;margin-top:5px}
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 48px;
+    transition: background .3s, border-color .3s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.scrolled {
+    background: rgba(8,10,15,.95);
+    border-color: var(--border);
+    backdrop-filter: blur(12px);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-logo em { color: var(--green); font-style: normal; }
+  .btn-nav {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    background: var(--green-dim);
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-nav:hover { background: rgba(34,197,94,.2); }
 
-.toggle-row{padding:11px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.06)}
-.tl{font-size:12px;color:rgba(255,255,255,.5)}
-.toggle{position:relative;width:36px;height:20px}
-.toggle input{opacity:0;width:0;height:0}
-.slider{position:absolute;inset:0;background:rgba(255,255,255,.1);border-radius:10px;cursor:pointer;transition:background .25s}
-.slider::after{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:rgba(255,255,255,.4);border-radius:50%;transition:transform .25s,background .25s}
-input:checked+.slider{background:rgba(34,197,94,.35)}
-input:checked+.slider::after{transform:translateX(16px);background:#22c55e}
+  /* HERO */
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 24px 40px;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(34,197,94,.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-tag {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--green);
+    border: 1px solid var(--green-border);
+    background: var(--green-dim);
+    padding: 5px 14px;
+    border-radius: 20px;
+    margin-bottom: 36px;
+    display: inline-block;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(52px, 8vw, 100px);
+    font-weight: 700;
+    line-height: 1.05;
+    color: #fff;
+    margin-bottom: 24px;
+    letter-spacing: -.02em;
+  }
+  .hero h1 em { font-style: italic; color: var(--green); }
+  .hero-sub {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 440px;
+    margin: 0 auto 48px;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 64px;
+  }
+  .btn-primary {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    background: var(--green);
+    color: #080a0f;
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-primary:hover { background: #16a34a; transform: translateY(-1px); }
+  .btn-ghost {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: .06em;
+    color: var(--muted);
+    padding: 13px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    transition: all .2s;
+  }
+  .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.2); }
 
-.footer{padding:9px 16px;display:flex;align-items:center;justify-content:space-between}
-.fv{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.15)}
-.fl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(34,197,94,.4);text-decoration:none}
-.fl:hover{color:rgba(34,197,94,.8)}
+  /* DEMO CARD */
+  .demo-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 24px;
+    width: 380px;
+    text-align: left;
+    box-shadow: 0 40px 100px rgba(0,0,0,.7);
+  }
+  .demo-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .demo-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .demo-logo em { color: var(--green); font-style: normal; }
+  .demo-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .demo-mag {
+    font-size: 16px;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+  .demo-item > svg, .demo-item > span:first-child { flex-shrink: 0; width: 26px; display: flex; justify-content: center; }
+  .demo-item {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 9px;
+    font-size: 12.5px;
+    color: rgba(255,255,255,.8);
+    line-height: 1.5;
+    width: 100%;
+  }
+  .demo-item::before {
+    content: none;
+  }
+  .demo-foot {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 9px;
+    letter-spacing: .06em;
+    color: rgba(255,255,255,.2);
+  }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
+
+  /* FEATURES LIST */
+  .features {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .feature {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 28px;
+    background: var(--bg2);
+    transition: background .2s;
+  }
+  .feature:hover { background: #111520; }
+  .feature-icon { font-size: 20px; flex-shrink: 0; }
+  .feature-text h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 3px;
+  }
+  .feature-text p {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .features-wrap {
+    padding: 32px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  /* PRICING */
+  .pricing {
+    padding: 32px 24px;
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .plan {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px 28px;
+  }
+  .plan.pro {
+    border-color: var(--green-border);
+    background: linear-gradient(135deg, #0d1018 0%, #091510 100%);
+  }
+  .plan-label {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: .02em;
+    text-transform: none;
+    color: rgba(255,255,255,.6);
+    margin-bottom: 16px;
+  }
+  .plan.pro .plan-label { color: var(--green); }
+  .plan-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .plan-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+  .plan-list {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+  .plan-list li {
+    font-size: 13px;
+    color: rgba(255,255,255,.7);
+    padding: 7px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .plan-list li:last-child { border: none; }
+  .chk { color: var(--green); font-size: 12px; }
+  .dsh { color: rgba(255,255,255,.2); }
+  .btn-plan {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: .06em;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-free {
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
+  .btn-free:hover { color: #fff; border-color: rgba(255,255,255,.2); }
+  .btn-pro {
+    background: var(--green);
+    color: #080a0f;
+  }
+  .btn-pro:hover { background: #16a34a; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 24px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: rgba(255,255,255,.3);
+    text-decoration: none;
+  }
+  .footer-logo em { color: var(--green); font-style: normal; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.2);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,.5); }
+
+  @media (max-width: 640px) {
+    nav { padding: 16px 20px; }
+    hr { margin: 0 20px; }
+    .pricing { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; }
+  }
 </style>
 </head>
 <body>
 
-<div class="header">
-  <div class="logo">to<span>E</span>ssence</div>
+<nav id="nav">
+  <a href="/" class="nav-logo">to<em>E</em>ssence</a>
+  <div class="footer-links">
+    <a href="privacy.html" class="nav-link">Privacy</a>
+    <a href="mailto:hello@toessence.net" class="nav-link">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="text-align:center;padding:80px 0 24px"><div class="hero-tag">Chrome Extension · AI · Інфогігієна</div></div>
+
+<!-- PRICING -->
+<div class="pricing" id="pricing">
+  <div class="plan">
+    <div class="plan-label">Free</div>
+    <div class="plan-price">$0</div>
+    <div class="plan-desc">Без реєстрації та картки.<br>Просто встановіть.</div>
+    <ul class="plan-list">
+      <li><span class="chk">✓</span> 50 Filters на день</li>
+      <li><span class="chk">✓</span> Новини, YouTube, маркетплейси</li>
+    </ul>
+    <a href="https://chrome.google.com/webstore" class="btn-plan btn-free">Встановити</a>
+  </div>
+  <div class="plan pro">
+    <div class="plan-label">Pro</div>
+    <div class="plan-price">~0.2%</div>
+    <div class="plan-desc">Від середнього доходу у вашій країні</div>
+    <ul class="plan-list">
+      <li><span class="chk">✓</span> Необмежені Filters</li>
+      <li><span class="chk">✓</span> Новини, YouTube, маркетплейси</li>
+    </ul>
+    <a href="pro.html" class="btn-plan btn-pro">Перейти на Pro</a>
+  </div>
 </div>
 
-<div class="block" id="filtersBlock">
-  <div class="lbl">Filters сьогодні</div>
-  <div class="big"><span id="used">0</span> <sub>/ <span id="limit">50</span></sub></div>
-  <div class="bar"><div class="fill" id="fill" style="width:0%"></div></div>
-  <div class="note" id="note">Поновлення опівночі</div>
-</div>
+<section class="hero">
+  <div class="demo-card">
+    <div class="demo-head">
+      <span class="demo-logo">to<em>E</em>ssence</span>
+      <div class="demo-mag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"><circle cx="10" cy="10" r="7"/><line x1="15" y1="15" x2="22" y2="22"/></svg></div>
+    </div>
+    <div class="demo-item"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="20" height="16" rx="2" fill="url(#ng)"/><rect x="4" y="8" width="16" height="4" rx="1" fill="white" opacity="0.9"/><rect x="4" y="14" width="8" height="1.5" rx="0.75" fill="white" opacity="0.7"/><rect x="4" y="17" width="6" height="1.5" rx="0.75" fill="white" opacity="0.7"/><rect x="14" y="14" width="6" height="4" rx="1" fill="white" opacity="0.3"/><defs><linearGradient id="ng" x1="2" y1="5" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#16a34a"/></linearGradient></defs></svg><span style="flex:1">Новини — суть статті за 2 секунди без переходу на сторінку</span></div>
+    <div class="demo-item"><svg width="18" height="18" viewBox="0 0 24 24" fill="#cc2200"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.4 2.8 12 2.8 12 2.8s-4.4 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.2v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.6 21.6 12 21.6 12 21.6s4.4 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"/></svg><span style="flex:1">YouTube — аналіз субтитрів відео за секунду</span></div>
+    <div class="demo-item"><span style="color:#fbbf24;font-size:16px;">★</span><span style="flex:1">Зірки рейтингу — 5 плюсів і 5 мінусів з реальних відгуків</span></div>
+    <div class="demo-foot">toEssence · Groq AI</div>
+  </div>
+</section>
 
-<div class="block" id="proBadge" style="display:none">
-  <div class="pro-row"><div class="pro-dot"></div><div class="pro-txt">Pro · Необмежені Filters ∞</div></div>
-</div>
 
-<div class="block" id="upgradeBlock" style="display:none">
-  <a class="upgrade-btn" id="upgradeBtn" href="https://toessence.net/pro" target="_blank">Перейти на Pro</a>
-  <div class="price-note" id="upgradePrice">Необмежені Filters</div>
-</div>
 
-<div class="toggle-row">
-  <span class="tl">Увімкнено</span>
-  <label class="toggle">
-    <input type="checkbox" id="tog" checked>
-    <span class="slider"></span>
-  </label>
-</div>
 
-<div class="footer">
-  <span class="fv">v4.0</span>
-  <a class="fl" href="https://toessence.net" target="_blank">toessence.net</a>
-</div>
 
-<script src="popup.js"></script>
+
+<script>
+  const nav = document.getElementById('nav')
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 20)
+  })
+</script>
+
+<div style="text-align:center;padding:40px 24px 32px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px">
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.2)">
+    © 2026 toEssence · <a href="privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Privacy Policy</a> · <a href="mailto:hello@toessence.net" style="color:rgba(255,255,255,.2);text-decoration:none;">Contact</a> · Made in Ukraine 🇺🇦
+  </p>
+</div>
 </body>
 </html>
