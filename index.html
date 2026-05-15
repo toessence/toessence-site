@@ -389,7 +389,12 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 </nav>
 
 <!-- HERO -->
-<div style="text-align:center;padding:80px 0 24px"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your <span style="color:#22c55e">Time.</span></div></div>
+<div style="text-align:center;padding:80px 0 0"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your <span style="color:#22c55e">Time.</span></div></div>
+
+<div style="text-align:center;padding:20px 0 40px">
+  <div style="font-family:'Times New Roman',Times,serif;font-size:22px;font-weight:700;color:rgba(255,255,255,.28);margin-bottom:10px;letter-spacing:.04em;font-style:italic">BBC News &nbsp;·&nbsp; Deutsche Welle &nbsp;·&nbsp; The New York Times &nbsp;·&nbsp; Al Jazeera &nbsp;·&nbsp; Reuters</div>
+  <div style="font-family:'Times New Roman',Times,serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.4)"><span data-i18n="media_tagline">Читайте світові медіа без жодних мовних бар'єрів</span></div>
+</div>
 
 <!-- PRICING -->
 <div class="pricing" id="pricing">
@@ -488,6 +493,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       const period = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
       if (el) el.textContent = p.a + ' ' + p.c + period;
       if (desc) desc.textContent = '';
+      if (desc) desc.textContent = '';
     })
     .catch(() => {
       const el = document.getElementById('proPriceMain');
@@ -518,6 +524,7 @@ const T = {
     demo1: 'Суть статті за 2 секунди без переходу на сторінку',
     demo2: 'Аналіз відео за субтитрами',
     demo3: 'Короткий зміст без переходу за посиланням',
+    media_tagline: 'Читайте світові медіа без жодних мовних бар\'єрів',
   },
   en: {
     slogan: 'Value Your <span style="color:#22c55e">Time.</span>',
@@ -535,6 +542,7 @@ const T = {
     demo1: 'Article summary in 2 seconds without opening the page',
     demo2: 'Video analysis by subtitles',
     demo3: 'Quick summary without following the link',
+    media_tagline: 'Read global media without any language barriers',
   }
 };
 
@@ -549,6 +557,13 @@ function setLang(lang) {
     const key = el.dataset.i18n;
     if (t[key]) el.innerHTML = t[key];
   });
+  // Update price period
+  const priceEl = document.getElementById('proPriceMain');
+  if (priceEl && priceEl.textContent) {
+    const txt = priceEl.textContent;
+    const period = lang === 'en' ? '/mo' : '/міс';
+    priceEl.textContent = txt.replace('/mo', period).replace('/міс', period);
+  }
 }
 
 // Init
