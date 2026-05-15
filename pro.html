@@ -99,6 +99,19 @@ const params = new URLSearchParams(location.search);
 const uuid = params.get('uuid') || '';
 const country = params.get('country') || '';
 
+// Якщо country не передано в URL — визначаємо по IP
+if (!country) {
+  fetch('https://ipapi.co/json/')
+    .then(r => r.json())
+    .then(d => {
+      const c = d.country_code || 'DEFAULT';
+      const p = pricing[c] || { amount: '2', currency: '$', note: '0.2% of average salary', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
+      document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '</span>';
+      document.getElementById('priceNote').textContent = p.note;
+    })
+    .catch(() => {});
+}
+
 // Country pricing — 0.2% від середньої зарплати (Numbeo 2025)
 const pricing = {
   CH: { amount: '14',    currency: 'CHF', note: '0.2% of average salary', stripePrice: 'price_CH_PLACEHOLDER' },
