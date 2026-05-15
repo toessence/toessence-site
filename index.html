@@ -161,7 +161,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     border: 1px solid var(--border);
     border-radius: 16px;
     padding: 20px 24px;
-    width: 380px;
+    width: 430px;
     text-align: left;
     box-shadow: 0 40px 100px rgba(0,0,0,.7);
   }
@@ -398,23 +398,23 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     <div class="plan-price">$0</div>
     <div class="plan-desc"><span data-i18n="free_desc">Без реєстрації та картки.<br>Просто встановіть.</span></div>
     <ul class="plan-list">
-      <li><span class="chk">✓</span> 1000 Filters на місяць</li>
-      <li><span class="chk">✓</span> Новини, YouTube, Google</li>
-      <li><span class="chk">✓</span> Підтримує більшість мов світу</li>
+      <li><span class="chk">✓</span> <span data-i18n="free_f1">1000 Filters на місяць</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="free_f2">Новини, YouTube, Google</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="free_f3">Підтримує більшість мов світу</span></li>
     </ul>
-    <a href="https://chrome.google.com/webstore" class="btn-plan btn-free">Встановити</a>
+    <a href="https://chrome.google.com/webstore" class="btn-plan btn-free"><span data-i18n="free_btn">Встановити</span></a>
   </div>
   <div class="plan pro">
     <div class="plan-label">Pro</div>
     <div class="plan-price" id="proPriceMain">...</div>
     <div class="plan-desc" id="proDescMain"></div>
     <ul class="plan-list">
-      <li><span class="chk">✓</span> Необмежені Filters</li>
-      <li><span class="chk">✓</span> Новини, YouTube, Google</li>
-      <li><span class="chk">✓</span> Підтримує більшість мов світу</li>
-      <li><span class="chk">✓</span> Скасування підписки в будь-який момент</li>
+      <li><span class="chk">✓</span> <span data-i18n="pro_f1">Необмежені Filters</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="pro_f2">Новини, YouTube, Google</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="pro_f3">Підтримує більшість мов світу</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="pro_f4">Скасування підписки в будь-який момент</span></li>
     </ul>
-    <a href="https://toessence.net/pro.html" class="btn-plan btn-pro">Перейти на Pro</a>
+    <a href="https://toessence.net/pro.html" class="btn-plan btn-pro"><span data-i18n="pro_btn">Перейти на Pro</span></a>
   </div>
 </div>
 
@@ -445,8 +445,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 </script>
 
 <div style="text-align:center;padding:40px 24px 32px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px">
-  <p style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.2)">
-    © 2026 toEssence · <a href="/about.html" style="color:rgba(255,255,255,.2);text-decoration:none;">About</a> · <a href="/contact.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Contact</a> · <a href="/privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Privacy</a> · Made in Ukraine 🇺🇦
+  <p style="font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.06em;color:rgba(255,255,255,.35)">
+    © 2026 toEssence · <a href="/about.html" style="color:rgba(255,255,255,.2);text-decoration:none;">About</a> · <a href="/contact.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Contact</a> · <a href="/privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Privacy</a> · Made in Ukraine
   </p>
 </div>
 
@@ -485,13 +485,15 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       const p = PRICING[d.country_code] || {a:'2', c:'$'};
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
-      if (el) el.textContent = p.a + ' ' + p.c + '/міс';
+      const period = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
+      if (el) el.textContent = p.a + ' ' + p.c + period;
       if (desc) desc.textContent = '';
     })
     .catch(() => {
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
-      if (el) el.textContent = '$2/міс';
+      const period2 = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
+      if (el) el.textContent = '$2' + period2;
       if (desc) desc.textContent = '';
     });
 })();
