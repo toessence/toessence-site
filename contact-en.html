@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,8 +14,6 @@ nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:s
 .logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff;cursor:pointer;transition:opacity .18s}
 .logo:hover{opacity:.75}
 .logo em{color:var(--green);font-style:normal}
-.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
-.nav-back:hover{color:var(--text)}
 .main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
 .card{background:var(--bg2);border:1px solid var(--gborder);border-radius:16px;padding:48px;max-width:480px;width:100%;text-align:center}
 h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:#fff;margin-bottom:12px}
@@ -30,27 +28,26 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 <body>
 <nav>
   <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
-  <a class="nav-back" data-i18n="nav-back" href="https://toessence.net/">← головна</a>
   <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
-    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">UA</button>
+    <button onclick="setLang('uk')" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em">UA</button>
     <span style="color:rgba(255,255,255,.2)">|</span>
-    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">EN</button>
+    <button onclick="setLang('en')" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em">EN</button>
   </div>
 </nav>
 <div class="main">
   <div class="card">
-    <h1 data-i18n="h1">Контакти</h1>
-    <p class="sub" data-i18n="sub">Маєте запитання, бізнес-пропозицію чи знайшли помилку? Пишіть нам — ми цінуємо ваш час і відповідаємо максимально швидко.</p>
+    <h1>Contact</h1>
+    <p class="sub">Have a question, business proposal or found a bug? Write to us — we value your time and respond as quickly as possible.</p>
     <div class="contact-item">
-      <span class="contact-label" data-i18n="lbl1">Загальні питання та пропозиції</span>
+      <span class="contact-label">General questions & proposals</span>
       <a class="contact-link" href="mailto:hello@toessence.net">hello@toessence.net</a>
     </div>
     <div class="contact-item">
-      <span class="contact-label" data-i18n="lbl2">Технічна підтримка та баг-репорти</span>
+      <span class="contact-label">Technical support & bug reports</span>
       <a class="contact-link" href="mailto:support@toessence.net">support@toessence.net</a>
     </div>
     <div class="contact-item">
-      <span class="contact-label" data-i18n="lbl3">Офіційний сайт</span>
+      <span class="contact-label">Official website</span>
       <a class="contact-link" href="https://toessence.net">toessence.net</a>
     </div>
   </div>
@@ -59,14 +56,8 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 <script>
 function setLang(lang) {
   localStorage.setItem('toe_lang', lang);
-  if (lang === 'en') window.location.href = '/contact-en.html';
+  if (lang === 'uk') window.location.href = '/contact.html';
 }
-document.addEventListener('DOMContentLoaded', () => {
-  const lang = localStorage.getItem('toe_lang') || 'uk';
-  if (lang === 'en') window.location.href = '/contact-en.html';
-  document.getElementById('btn-uk').style.color = '#22c55e';
-  document.getElementById('btn-en').style.color = 'rgba(255,255,255,.3)';
-});
 </script>
 </body>
 </html>

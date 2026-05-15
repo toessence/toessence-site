@@ -32,23 +32,40 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 <body>
 <nav>
   <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
-  <a class="nav-back" href="https://toessence.net/">← головна</a>
+  <a class="nav-back" data-i18n="nav-back" href="https://toessence.net/">← головна</a>
+  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">UA</button>
+    <span style="color:rgba(255,255,255,.2)">|</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">EN</button>
+  </div>
 </nav>
 <div class="content">
   <h1>Value Your <em style="color:#22c55e">Time.</em></h1>
 
-  <h2>Мета проекту</h2>
-  <p>toEssence — це програмне розширення для браузера, розроблене як інструмент когнітивної безпеки та цифрової гігієни. Його функціонал спрямований на вирішення проблеми інформаційного перевантаження, викликаного безперервним потоком неякісного та маніпулятивного контенту в мережі.</p>
-  <p>Алгоритм системи автоматично фільтрує вхідний текст, очищує його від клікбейту, емоційних тригерів та прихованих маніпуляцій, після чого за кілька секунд генерує стислий і структурований зміст матеріалу.</p>
-  <p>Такий підхід автоматизує процес первинної перевірки інформації. Замість пасивного споживання великих обсягів текстів та відео, користувач за лічені секунди отримує головні тези новин. Це дозволяє повернути контроль над розподілом власного часу, знизити ментальну втому та зберегти концентрацію на професійних задачах.</p>
+  <h2 data-i18n="h2-mission">Мета проекту</h2>
+  <p data-i18n="p1">toEssence — це програмне розширення для браузера, розроблене як інструмент когнітивної безпеки та цифрової гігієни. Його функціонал спрямований на вирішення проблеми інформаційного перевантаження, викликаного безперервним потоком неякісного та маніпулятивного контенту в мережі.</p>
+  <p data-i18n="p2">Алгоритм системи автоматично фільтрує вхідний текст, очищує його від клікбейту, емоційних тригерів та прихованих маніпуляцій, після чого за кілька секунд генерує стислий і структурований зміст матеріалу.</p>
+  <p data-i18n="p3">Такий підхід автоматизує процес первинної перевірки інформації. Замість пасивного споживання великих обсягів текстів та відео, користувач за лічені секунди отримує головні тези новин. Це дозволяє повернути контроль над розподілом власного часу, знизити ментальну втому та зберегти концентрацію на професійних задачах.</p>
 
 
 
 
 
 
-  <p>Просто наведи курсор і читай!</p>
+  <p data-i18n="p4">Просто наведи курсор і читай!</p>
 </div>
 <footer>© 2026 toessence.net · Made in Ukraine 🇺🇦</footer>
+<script>
+function setLang(lang) {
+  localStorage.setItem('toe_lang', lang);
+  if (lang === 'en') window.location.href = '/about-en.html';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('toe_lang') || 'uk';
+  if (lang === 'en') window.location.href = '/about-en.html';
+  document.getElementById('btn-uk').style.color = '#22c55e';
+  document.getElementById('btn-en').style.color = 'rgba(255,255,255,.3)';
+});
+</script>
 </body>
 </html>

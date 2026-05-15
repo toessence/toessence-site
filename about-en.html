@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — toEssence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080a0f;--bg2:#0d1018;--border:rgba(255,255,255,.06);--text:#d8d8d0;--muted:#52596a;--green:#22c55e;--gborder:rgba(34,197,94,.22)}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--green);text-decoration:none}
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff;cursor:pointer;transition:opacity .18s}
+.logo:hover{opacity:.75}
+.logo em{color:var(--green);font-style:normal}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.nav-back:hover{color:var(--text)}
+.content{max-width:680px;margin:0 auto;padding:60px 24px;flex:1}
+h1{font-family:'Playfair Display',serif;font-size:48px;font-weight:400;color:#fff;margin-bottom:24px;line-height:1.1}
+h1 em{color:var(--green);font-style:normal}
+h2{font-size:14px;font-weight:500;color:#fff;margin:36px 0 12px;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.55);margin-bottom:16px}
+footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
+  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+    <button onclick="setLang('uk')" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em">UA</button>
+    <span style="color:rgba(255,255,255,.2)">|</span>
+    <button onclick="setLang('en')" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em">EN</button>
+  </div>
+</nav>
+<div class="content">
+  <h1>Value Your <em>Time.</em></h1>
+
+  <h2>Project Mission</h2>
+  <p>toEssence is a browser extension designed as a tool for cognitive security and digital hygiene. Its functionality addresses the problem of information overload caused by the continuous flow of low-quality and manipulative content online.</p>
+  <p>The system algorithm automatically filters incoming text, removing clickbait, emotional triggers and hidden manipulations, then generates a concise and structured summary within seconds.</p>
+  <p>This approach automates the process of initial information verification. Instead of passively consuming large volumes of texts and videos, users get the key points in seconds — helping reclaim control over their time, reduce mental fatigue and maintain focus on professional tasks.</p>
+  <p>Just hover and read!</p>
+</div>
+<footer>© 2026 toessence.net · Made in Ukraine 🇺🇦</footer>
+<script>
+function setLang(lang) {
+  localStorage.setItem('toe_lang', lang);
+  if (lang === 'uk') window.location.href = '/about.html';
+}
+</script>
+</body>
+</html>
