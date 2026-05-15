@@ -17,7 +17,7 @@ body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-ser
 a{text-decoration:none;color:inherit}
 
 nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
-.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff;cursor:pointer;transition:opacity .18s}.logo:hover{opacity:.75}
 .logo em{color:var(--green);font-style:normal}
 .nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
 .nav-back:hover{color:var(--text)}
@@ -56,7 +56,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
 <body>
 
 <nav>
-  <div class="logo">to<em>E</em>ssence</div>
+  <a class="logo" href="https://toessence.net/" style="text-decoration:none">to<em>E</em>ssence</a>
   <a class="nav-back" href="https://toessence.net/">← повернутись</a>
 </nav>
 
