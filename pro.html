@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="uk">
-<head>
-<meta charset="UTF-8">
+<!-- saved from url=(0030)https://toessence.net/pro.html -->
+<html lang="uk" data-sumpeek-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>toEssence Pro — необмежені Filters</title>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="https://toessence.net/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link href="./toEssence Pro — необмежені Filters_files/css2" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--bg:#080a0f;--bg2:#0d1018;--border:rgba(255,255,255,.06);--text:#d8d8d0;--muted:#52596a;--green:#22c55e;--gdim:rgba(34,197,94,.08);--gborder:rgba(34,197,94,.22)}
@@ -20,7 +22,8 @@ nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:s
 .nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
 .nav-back:hover{color:var(--text)}
 
-.main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+.main{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;padding:48px 24px}
+.slogan{font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;text-align:center;margin-bottom:48px;letter-spacing:-.01em}
 .card{background:var(--bg2);border:1px solid var(--gborder);border-radius:16px;padding:48px;max-width:480px;width:100%;text-align:center}
 
 .badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);border:1px solid var(--gborder);padding:5px 14px;border-radius:16px;display:inline-block;margin-bottom:24px}
@@ -44,9 +47,6 @@ h1{font-family:'Playfair Display',serif;font-size:40px;font-weight:400;color:#ff
 
 .country-prices{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:24px}
 .cp{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center}
-.cp-flag{font-size:16px;margin-bottom:3px}
-.cp-price{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text)}
-.cp-country{font-size:10px;color:var(--muted)}
 
 footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify-content:space-between;align-items:center}
 .fc{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.15)}
@@ -57,50 +57,39 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
 
 <nav>
   <div class="logo">to<em>E</em>ssence</div>
-  <a class="nav-back" href="/">← повернутись</a>
+  <a class="nav-back" href="https://toessence.net/">← повернутись</a>
 </nav>
 
 <div class="main">
+  <div class="slogan">Value Your Time.</div>
   <div class="card">
-    <div class="badge">Pro версія</div>
-    <h1>Необмежені<br>Filters ∞</h1>
-    <p class="price-sub">Справедлива ціна — 0.2% від мінімальної зарплати вашої країни. Ціна визначається автоматично.</p>
-
-    <div class="country-prices">
-      <div class="cp"><div class="cp-flag">🇺🇦</div><div class="cp-price">60 грн</div><div class="cp-country">Україна</div></div>
-      <div class="cp"><div class="cp-flag">🇩🇪</div><div class="cp-price">8€</div><div class="cp-country">Німеччина</div></div>
-      <div class="cp"><div class="cp-flag">🇺🇸</div><div class="cp-price">$10</div><div class="cp-country">США</div></div>
-      <div class="cp"><div class="cp-flag">🇬🇧</div><div class="cp-price">£7</div><div class="cp-country">Великобр.</div></div>
-      <div class="cp"><div class="cp-flag">🇵🇱</div><div class="cp-price">12 zł</div><div class="cp-country">Польща</div></div>
-      <div class="cp"><div class="cp-flag">🌍</div><div class="cp-price">$3</div><div class="cp-country">Інші</div></div>
-    </div>
+    
 
     <div class="price-display">
-      <div class="price-amount" id="priceAmount">...<span style="font-size:22px;color:var(--muted)" id="priceCurrency"></span></div>
-      <div class="price-period">на місяць · скасування будь-коли</div>
-      <div class="price-note" id="priceNote">Визначаємо ціну для вашої країни...</div>
+      <div class="price-amount" id="priceAmount">3<span style="font-size:22px;color:var(--muted)">$</span></div>
+      <div class="price-period">на місяць</div>
+      <div class="price-note" id="priceNote">Price for your region</div>
     </div>
 
     <div class="features">
-      <div class="feature">Необмежені Filters — без добових лімітів</div>
-      <div class="feature">Новини, YouTube, маркетплейси</div>
-      <div class="feature">17+ мов автоматично</div>
-      <div class="feature">Автоматичне розблокування після оплати</div>
+      <div class="feature">Необмежені Filters</div>
+      <div class="feature">Новини, YouTube, Google</div>
+      <div class="feature">Підтримує більшість мов світу</div>
       <div class="feature">Скасування підписки в будь-який момент</div>
     </div>
 
     <button class="checkout-btn" id="checkoutBtn" onclick="startCheckout()">
-      Оформити Pro підписку →
+      Оформити Pro підписку
     </button>
-    <div class="secure-note">🔒 Безпечна оплата через <span>Stripe</span> · Картка, Google Pay, Apple Pay</div>
+    <div class="secure-note">Безпечна оплата через <span>Stripe</span> · Картка, Google Pay, Apple Pay</div>
   </div>
 </div>
 
 <footer>
   <div class="fc">© 2026 toessence.net</div>
   <div class="fl">
-    <a href="/privacy">Конфіденційність</a>
-    <a href="/terms">Умови</a>
+    <a href="https://toessence.net/privacy">Конфіденційність</a>
+    <a href="https://toessence.net/terms">Умови</a>
   </div>
 </footer>
 
@@ -110,19 +99,100 @@ const params = new URLSearchParams(location.search);
 const uuid = params.get('uuid') || '';
 const country = params.get('country') || '';
 
-// Country pricing map
+// Country pricing — 0.2% від середньої зарплати (Numbeo 2025)
 const pricing = {
-  UA: { amount: '60', currency: 'грн', note: 'Ціна для України · 0.2% від мінімальної з/п', stripePrice: 'price_UA_PLACEHOLDER' },
-  DE: { amount: '8', currency: '€', note: 'Preis für Deutschland', stripePrice: 'price_DE_PLACEHOLDER' },
-  FR: { amount: '8', currency: '€', note: 'Prix pour la France', stripePrice: 'price_FR_PLACEHOLDER' },
-  GB: { amount: '7', currency: '£', note: 'Price for United Kingdom', stripePrice: 'price_GB_PLACEHOLDER' },
-  US: { amount: '10', currency: '$', note: 'Price for United States', stripePrice: 'price_US_PLACEHOLDER' },
-  CA: { amount: '9', currency: 'CA$', note: 'Price for Canada', stripePrice: 'price_CA_PLACEHOLDER' },
-  AU: { amount: '9', currency: 'AU$', note: 'Price for Australia', stripePrice: 'price_AU_PLACEHOLDER' },
-  PL: { amount: '12', currency: 'zł', note: 'Cena dla Polski', stripePrice: 'price_PL_PLACEHOLDER' },
+  CH: { amount: '14',    currency: 'CHF', note: '0.2% of average salary', stripePrice: 'price_CH_PLACEHOLDER' },
+  LU: { amount: '10',    currency: '€',   note: '0.2% du salaire moyen',  stripePrice: 'price_LU_PLACEHOLDER' },
+  SG: { amount: '12',    currency: 'SGD', note: '0.2% of average salary', stripePrice: 'price_SG_PLACEHOLDER' },
+  US: { amount: '8.5',   currency: '$',   note: '0.2% of average salary', stripePrice: 'price_US_PLACEHOLDER' },
+  DK: { amount: '59',    currency: 'DKK', note: '0.2% of average salary', stripePrice: 'price_DK_PLACEHOLDER' },
+  NO: { amount: '89',    currency: 'NOK', note: '0.2% of average salary', stripePrice: 'price_NO_PLACEHOLDER' },
+  AU: { amount: '13',    currency: 'AU$', note: '0.2% of average salary', stripePrice: 'price_AU_PLACEHOLDER' },
+  IL: { amount: '29',    currency: '₪',   note: '0.2% of average salary', stripePrice: 'price_IL_PLACEHOLDER' },
+  NL: { amount: '7',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_NL_PLACEHOLDER' },
+  IE: { amount: '6.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_IE_PLACEHOLDER' },
+  DE: { amount: '6.5',   currency: '€',   note: '0.2% des Durchschnittsgehalts', stripePrice: 'price_DE_PLACEHOLDER' },
+  GB: { amount: '5',     currency: '£',   note: '0.2% of average salary', stripePrice: 'price_GB_PLACEHOLDER' },
+  SE: { amount: '68',    currency: 'SEK', note: '0.2% of average salary', stripePrice: 'price_SE_PLACEHOLDER' },
+  BE: { amount: '5.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_BE_PLACEHOLDER' },
+  FI: { amount: '5.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_FI_PLACEHOLDER' },
+  AT: { amount: '5.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_AT_PLACEHOLDER' },
+  CA: { amount: '8.5',   currency: 'CA$', note: '0.2% of average salary', stripePrice: 'price_CA_PLACEHOLDER' },
+  NZ: { amount: '10',    currency: 'NZ$', note: '0.2% of average salary', stripePrice: 'price_NZ_PLACEHOLDER' },
+  FR: { amount: '5.5',   currency: '€',   note: '0.2% du salaire moyen',  stripePrice: 'price_FR_PLACEHOLDER' },
+  KR: { amount: '5800',  currency: '₩',   note: '0.2% of average salary', stripePrice: 'price_KR_PLACEHOLDER' },
+  ES: { amount: '4',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_ES_PLACEHOLDER' },
+  IT: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_IT_PLACEHOLDER' },
+  JP: { amount: '580',   currency: '¥',   note: '0.2% of average salary', stripePrice: 'price_JP_PLACEHOLDER' },
+  CZ: { amount: '84',    currency: 'CZK', note: '0.2% of average salary', stripePrice: 'price_CZ_PLACEHOLDER' },
+  PL: { amount: '14',    currency: 'zł',  note: '0.2% średniej pensji',   stripePrice: 'price_PL_PLACEHOLDER' },
+  HU: { amount: '1000',  currency: 'HUF', note: '0.2% of average salary', stripePrice: 'price_HU_PLACEHOLDER' },
+  PT: { amount: '2.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_PT_PLACEHOLDER' },
+  GR: { amount: '2',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_GR_PLACEHOLDER' },
+  BG: { amount: '4',     currency: 'BGN', note: '0.2% of average salary', stripePrice: 'price_BG_PLACEHOLDER' },
+  RO: { amount: '10',    currency: 'RON', note: '0.2% of average salary', stripePrice: 'price_RO_PLACEHOLDER' },
+  TR: { amount: '69',    currency: '₺',   note: '0.2% of average salary', stripePrice: 'price_TR_PLACEHOLDER' },
+  RS: { amount: '210',   currency: 'RSD', note: '0.2% of average salary', stripePrice: 'price_RS_PLACEHOLDER' },
+  MY: { amount: '9',     currency: 'MYR', note: '0.2% of average salary', stripePrice: 'price_MY_PLACEHOLDER' },
+  RU: { amount: '160',   currency: '₽',   note: '0.2% of average salary', stripePrice: 'price_RU_PLACEHOLDER' },
+  MX: { amount: '28',    currency: 'MXN', note: '0.2% of average salary', stripePrice: 'price_MX_PLACEHOLDER' },
+  UA: { amount: '41',    currency: 'грн', note: '0.2% від середньої з/п', stripePrice: 'price_UA_PLACEHOLDER' },
+  IN: { amount: '72',    currency: '₹',   note: '0.2% of average salary', stripePrice: 'price_IN_PLACEHOLDER' },
+  VN: { amount: '20500', currency: '₫',   note: '0.2% of average salary', stripePrice: 'price_VN_PLACEHOLDER' },
+  PH: { amount: '37',    currency: '₱',   note: '0.2% of average salary', stripePrice: 'price_PH_PLACEHOLDER' },
+  ID: { amount: '8500',  currency: 'Rp',  note: '0.2% of average salary', stripePrice: 'price_ID_PLACEHOLDER' },
+  PK: { amount: '100',   currency: '₨',   note: '0.2% of average salary', stripePrice: 'price_PK_PLACEHOLDER' },
+  NG: { amount: '240',   currency: '₦',   note: '0.2% of average salary', stripePrice: 'price_NG_PLACEHOLDER' },
+  AR: { amount: '1300',  currency: 'ARS', note: '0.2% of average salary', stripePrice: 'price_AR_PLACEHOLDER' },
+  CL: { amount: '1300',  currency: 'CLP', note: '0.2% of average salary', stripePrice: 'price_CL_PLACEHOLDER' },
+  CO: { amount: '3800',  currency: 'COP', note: '0.2% of average salary', stripePrice: 'price_CO_PLACEHOLDER' },
+  KZ: { amount: '580',   currency: '₸',   note: '0.2% of average salary', stripePrice: 'price_KZ_PLACEHOLDER' },
+  TH: { amount: '44',    currency: '฿',   note: '0.2% of average salary', stripePrice: 'price_TH_PLACEHOLDER' },
+  EG: { amount: '13',    currency: 'EGP', note: '0.2% of average salary', stripePrice: 'price_EG_PLACEHOLDER' },
+  MA: { amount: '9.5',   currency: 'MAD', note: '0.2% of average salary', stripePrice: 'price_MA_PLACEHOLDER' },
+  KE: { amount: '94',    currency: 'KES', note: '0.2% of average salary', stripePrice: 'price_KE_PLACEHOLDER' },
+  ZA: { amount: '54',    currency: 'ZAR', note: '0.2% of average salary', stripePrice: 'price_ZA_PLACEHOLDER' },
+  SK: { amount: '2.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_SK_PLACEHOLDER' },
+  HR: { amount: '3',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_HR_PLACEHOLDER' },
+  LT: { amount: '3',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_LT_PLACEHOLDER' },
+  LV: { amount: '2.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_LV_PLACEHOLDER' },
+  EE: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_EE_PLACEHOLDER' },
+  SI: { amount: '3',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_SI_PLACEHOLDER' },
+  MT: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_MT_PLACEHOLDER' },
+  CY: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_CY_PLACEHOLDER' },
+  BA: { amount: '3',     currency: 'BAM', note: '0.2% of average salary', stripePrice: 'price_BA_PLACEHOLDER' },
+  ME: { amount: '2',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_ME_PLACEHOLDER' },
+  MK: { amount: '88',    currency: 'MKD', note: '0.2% of average salary', stripePrice: 'price_MK_PLACEHOLDER' },
+  AL: { amount: '140',   currency: 'ALL', note: '0.2% of average salary', stripePrice: 'price_AL_PLACEHOLDER' },
+  MD: { amount: '27',    currency: 'MDL', note: '0.2% of average salary', stripePrice: 'price_MD_PLACEHOLDER' },
+  BY: { amount: '5',     currency: 'BYN', note: '0.2% of average salary', stripePrice: 'price_BY_PLACEHOLDER' },
+  GE: { amount: '3',     currency: 'GEL', note: '0.2% of average salary', stripePrice: 'price_GE_PLACEHOLDER' },
+  AM: { amount: '550',   currency: 'AMD', note: '0.2% of average salary', stripePrice: 'price_AM_PLACEHOLDER' },
+  AZ: { amount: '1.5',   currency: 'AZN', note: '0.2% of average salary', stripePrice: 'price_AZ_PLACEHOLDER' },
+  UZ: { amount: '12700', currency: 'UZS', note: '0.2% of average salary', stripePrice: 'price_UZ_PLACEHOLDER' },
+  BR: { amount: '5.5',   currency: 'BRL', note: '0.2% of average salary', stripePrice: 'price_BR_PLACEHOLDER' },
+  PE: { amount: '4.5',   currency: 'PEN', note: '0.2% of average salary', stripePrice: 'price_PE_PLACEHOLDER' },
+  BO: { amount: '6',     currency: 'BOB', note: '0.2% of average salary', stripePrice: 'price_BO_PLACEHOLDER' },
+  DO: { amount: '72',    currency: 'DOP', note: '0.2% of average salary', stripePrice: 'price_DO_PLACEHOLDER' },
+  CR: { amount: '1100',  currency: 'CRC', note: '0.2% of average salary', stripePrice: 'price_CR_PLACEHOLDER' },
+  UY: { amount: '85',    currency: 'UYU', note: '0.2% of average salary', stripePrice: 'price_UY_PLACEHOLDER' },
+  CN: { amount: '15',    currency: 'CNY', note: '0.2% of average salary', stripePrice: 'price_CN_PLACEHOLDER' },
+  TW: { amount: '110',   currency: 'TWD', note: '0.2% of average salary', stripePrice: 'price_TW_PLACEHOLDER' },
+  JO: { amount: '1',     currency: 'JOD', note: '0.2% of average salary', stripePrice: 'price_JO_PLACEHOLDER' },
+  IQ: { amount: '1500',  currency: 'IQD', note: '0.2% of average salary', stripePrice: 'price_IQ_PLACEHOLDER' },
+  SA: { amount: '15',    currency: 'SAR', note: '0.2% of average salary', stripePrice: 'price_SA_PLACEHOLDER' },
+  AE: { amount: '23',    currency: 'AED', note: '0.2% of average salary', stripePrice: 'price_AE_PLACEHOLDER' },
+  KW: { amount: '1.9',   currency: 'KWD', note: '0.2% of average salary', stripePrice: 'price_KW_PLACEHOLDER' },
+  BH: { amount: '1.7',   currency: 'BHD', note: '0.2% of average salary', stripePrice: 'price_BH_PLACEHOLDER' },
+  OM: { amount: '1.9',   currency: 'OMR', note: '0.2% of average salary', stripePrice: 'price_OM_PLACEHOLDER' },
+  LK: { amount: '130',   currency: 'LKR', note: '0.2% of average salary', stripePrice: 'price_LK_PLACEHOLDER' },
+  NP: { amount: '56',    currency: 'NPR', note: '0.2% of average salary', stripePrice: 'price_NP_PLACEHOLDER' },
+  BD: { amount: '52',    currency: 'BDT', note: '0.2% of average salary', stripePrice: 'price_BD_PLACEHOLDER' },
+  TN: { amount: '2',     currency: 'TND', note: '0.2% of average salary', stripePrice: 'price_TN_PLACEHOLDER' },
+  DZ: { amount: '83',    currency: 'DZD', note: '0.2% of average salary', stripePrice: 'price_DZ_PLACEHOLDER' },
 };
 
-const p = pricing[country] || { amount: '3', currency: '$', note: 'Price for your region', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
+const p = pricing[country] || { amount: '2', currency: '$', note: '0.2% of average salary', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
 
 document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '</span>';
 document.getElementById('priceNote').textContent = p.note;
@@ -146,11 +216,12 @@ async function startCheckout() {
       throw new Error('No checkout URL');
     }
   } catch (e) {
-    btn.textContent = 'Оформити Pro підписку →';
+    btn.textContent = 'Оформити Pro підписку';
     btn.disabled = false;
     alert('Помилка. Спробуйте ще раз.');
   }
 }
 </script>
-</body>
-</html>
+
+
+<veepn-lock-screen><template shadowrootmode="open"><style>html{box-sizing:border-box;text-size-adjust:100%;word-break:normal;tab-size:4}*,:before,:after{background-repeat:no-repeat;box-sizing:border-box}:before,:after{text-decoration:inherit;vertical-align:inherit}*{padding:0;margin:0}hr{overflow:visible;height:0;color:inherit;border:0;border-top:1px solid}details,main{display:block}summary{display:list-item}small{font-size:80%}[hidden]{display:none!important}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}a{background-color:transparent}a:active,a:hover{outline-width:0}code,kbd,pre,samp{font-family:monospace}pre{font-size:1em}b,strong{font-weight:bolder}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{border-color:inherit;text-indent:0}iframe{border-style:none}input{border-radius:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{appearance:none}textarea{overflow:auto;resize:vertical}button,input,optgroup,select,textarea{font:inherit;color:inherit}optgroup{font-weight:700}button{overflow:visible}button,select{text-transform:none}button,[type=button],[type=reset],[type=submit],[role=button]{cursor:pointer}button::-moz-focus-inner,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{border-style:none;padding:0}button,html [type=button],[type=reset],[type=submit]{appearance:auto}button,input,select,textarea{background-color:transparent;border-style:none}button:-moz-focusring,[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner{outline:1px dotted ButtonText}select{appearance:none}a:focus,button:focus,input:focus,select:focus,textarea:focus{outline-width:0}select::-ms-expand{display:none}select::-ms-value{color:currentcolor}legend{border:0;color:inherit;display:table;white-space:normal;max-width:100%}::-webkit-file-upload-button{appearance:auto;color:inherit;font:inherit}[disabled]{cursor:default}img{border-style:none}progress{vertical-align:baseline}[aria-busy=true]{cursor:progress}[aria-controls]{cursor:pointer}[aria-disabled=true]{cursor:default}ul,ol{list-style-type:none}figure{margin:0}@keyframes slide-in{0%{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}.gradient-blue{background:radial-gradient(106.41% 128.47% at 50.15% 128.47%,#23abff,#3066ff)}.gradient-green{background:radial-gradient(92.26% 118.88% at 50.15% .13%,#00c3c3,#00aab3)}.gradient-purple{background:radial-gradient(165.12% 115.56% at 50.15% .13%,#a15aff,#00a0eb)}.bg-blue{background-color:#f2f5ff}.bg-purple{background-color:#f7f0ff}.bg-green{background-color:#ebffed}.lock-screen{font-family:FigtreeVF,sans-serif;letter-spacing:normal;position:fixed;z-index:2147483638;right:24px;bottom:24px;width:327px;border-radius:24px;overflow:hidden;box-shadow:0 24px 32px #00000014;animation:slide-in .3s ease-in-out forwards}.lock-screen__content{position:relative;padding:24px 24px 64px}.lock-screen__close{position:absolute;top:16px;right:16px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;opacity:.5}.lock-screen__label{height:26px;width:fit-content;border-radius:50px;background-color:#fff3;padding-inline:16px;display:flex;align-items:center;justify-content:center;gap:8px;color:#fff;font-size:12px;line-height:18px;margin:-8px auto 16px}.lock-screen__title{color:#fff;text-align:center;font-size:20px;line-height:28px;font-weight:600;margin-bottom:8px}.lock-screen__description{color:#f5f6f7;text-align:center;font-size:14px;line-height:20px}.lock-screen__description b{font-weight:600}.lock-screen__card{position:relative;z-index:1;margin-top:-44px;background-color:#fff;border-radius:24px;padding:32px 20px 20px}.lock-screen__inner{margin-bottom:24px}.lock-screen__submit{display:flex;align-items:center;justify-content:center;gap:10px;font-weight:700;font-size:16px;height:40px;width:100%;border-radius:12px;padding-inline:16px;background-color:#f70;color:#fff;margin-bottom:16px}.lock-screen__skip{display:flex;align-items:center;justify-content:center;font-size:14px;line-height:20px;color:#82829c;margin-inline:auto}.price-card{border:1px solid #f2f2fc;background:linear-gradient(254.14deg,#fafbff .04%,#f5f8ff 100.04%);border-radius:24px;padding:24px 28px}.price-card__label{color:#4a5764;text-align:center;font-size:14px;line-height:20px;text-transform:uppercase;margin-bottom:16px}.price-card__price{display:flex;justify-content:center;align-items:flex-start;column-gap:2px;margin-bottom:12px}.price-card__currency{color:#515478;font-size:18px;line-height:28px}.price-card__number{color:#14142a;text-align:center;font-size:64px;line-height:54px}.price-card__wrap{display:flex;flex-direction:column}.price-card__decimal{color:#515478;font-size:18px;line-height:28px;font-weight:600}.price-card__period{color:#515478;font-size:14px;line-height:20px;margin-top:-6px}.price-card__discount{position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:12px}.price-card__discount-divider{position:absolute;z-index:0;top:50%;left:0;width:100%;height:1px;background-color:#dbe2f9;transform:translateY(-50%)}.price-card__discount-icon{position:absolute;z-index:1;top:50%;left:50%;transform:translate(-50%,-50%)}.price-card__discount-text{position:relative;z-index:2;color:#fff;font-size:12px;font-weight:600;line-height:18px}.price-card__features{display:flex;align-items:center;justify-content:center;column-gap:16px}.price-card__feature{color:#222e3a;font-size:14px;line-height:20px;display:flex;align-items:center;gap:6px}.price-card__feature:before{content:"";display:block;width:4px;height:4px;background-color:#20df9e;border-radius:50%;flex-shrink:0}.features-list{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.features-list__item{display:flex;flex-direction:column;align-items:center;gap:6px}.features-list__icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center}.features-list__text{color:#293a53;text-align:center;font-size:16px;line-height:24px;letter-spacing:-.1px}</style></template><style>@font-face{font-family:FigtreeVF;src:url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2 supports variations"),url(chrome-extension://majdfhpaihoncoakbjgbdhglocklcgno/fonts/FigtreeVF.woff2) format("woff2-variations");font-weight:100 1000;font-display:swap}</style></veepn-lock-screen></body></html>
