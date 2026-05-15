@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — toEssence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080a0f;--bg2:#0d1018;--border:rgba(255,255,255,.06);--text:#d8d8d0;--muted:#52596a;--green:#22c55e}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300}
+a{color:var(--green);text-decoration:none}
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff;cursor:pointer;transition:opacity .18s}
+.logo:hover{opacity:.75}
+.logo em{color:var(--green);font-style:normal}
+.content{max-width:680px;margin:0 auto;padding:60px 24px}
+h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:#fff;margin-bottom:8px}
+.date{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-bottom:48px}
+h2{font-size:16px;font-weight:500;color:#fff;margin:32px 0 10px}
+p{font-size:14px;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:12px}
+ul{padding-left:20px;margin-bottom:12px}
+li{font-size:14px;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:4px}
+footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
+  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em">UA</button>
+    <span style="color:rgba(255,255,255,.2)">|</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em">EN</button>
+  </div>
+</nav>
+<div class="content">
+  <h1>Privacy Policy</h1>
+  <div class="date">Updated: May 2026</div>
+
+  <p>toEssence is built with a Privacy by Design approach. Data collection is minimized and information is never sold to third parties.</p>
+
+  <h2>1. What data we collect</h2>
+  <p>On the Free plan:</p>
+  <ul>
+    <li><strong>Anonymous UUID</strong> — generated locally in your browser to identify the session.</li>
+    <li><strong>Country & region</strong> — determined automatically by IP address for correct local pricing.</li>
+    <li><strong>Filter type</strong> — anonymized data about content type (news, YouTube, reviews).</li>
+    <li><strong>Timestamp</strong> — date and time of the request.</li>
+  </ul>
+  <p>We strictly <strong>do NOT collect</strong>: name, phone numbers, or exact IP address (only an irreversible hash), URLs of visited pages, or full content of articles or videos.</p>
+
+  <h2>2. How we use data</h2>
+  <p>Data is used solely to operate the service:</p>
+  <ul>
+    <li>Tracking and enforcing the free request limit (1000 filters per calendar month).</li>
+    <li>Anonymous usage statistics (active users count, feature popularity).</li>
+    <li>Adapting Pro pricing to the user's country.</li>
+  </ul>
+
+  <h2>3. Pro subscription & payments</h2>
+  <ul>
+    <li>Payments are processed by the certified Stripe service.</li>
+    <li>During payment, Stripe collects your email and payment details.</li>
+    <li>toEssence only stores your UUID and subscription status.</li>
+    <li>We have no access to your card or email stored in Stripe.</li>
+  </ul>
+
+  <h2>4. Third-party data sharing</h2>
+  <ul>
+    <li><strong>Google Gemini API</strong> — processes content text for summary generation. Data sent via the API is confidential, not stored for human review, and not used for AI model training.</li>
+    <li><strong>Supabase</strong> — secure cloud database in the EU region (EU-Central) for anonymous statistics.</li>
+    <li><strong>Stripe</strong> — international payment processing with the highest PCI-DSS security level.</li>
+  </ul>
+
+  <h2>5. Cookies & local storage</h2>
+  <p>We do not use marketing or tracking cookies. UUID and interface settings are stored in browser local storage (Chrome Storage).</p>
+
+  <h2>6. Retention & security</h2>
+  <ul>
+    <li>Detailed filter usage logs are automatically deleted after 90 days.</li>
+    <li>Aggregated anonymized statistics are retained indefinitely.</li>
+    <li>Data is encrypted in transit (HTTPS) and at rest (AES-256).</li>
+  </ul>
+
+  <h2>7. User rights (including GDPR)</h2>
+  <p>You have full control over your data. To request complete deletion of your information, email <a href="mailto:hello@toessence.net">hello@toessence.net</a> with your anonymous UUID (found in extension settings).</p>
+
+  <h2>8. Changes to this policy</h2>
+  <p>We reserve the right to update this document. In case of significant changes, users will be notified via the extension interface or on the official website.</p>
+
+  <h2>9. Contact</h2>
+  <p>Privacy questions: <a href="mailto:hello@toessence.net">hello@toessence.net</a></p>
+</div>
+<footer>© 2026 toessence.net</footer>
+<script>
+function setLang(lang) {
+  localStorage.setItem('toe_lang', lang);
+  if (lang === 'uk') window.location.href = '/privacy.html';
+}
+</script>
+</body>
+</html>

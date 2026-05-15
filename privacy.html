@@ -27,15 +27,20 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 <body>
 <nav>
   <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
-  <a href="/" style="font-family:monospace;font-size:10px;color:var(--muted)">← головна</a>
+  <a href="/" style="font-family:monospace;font-size:10px;color:var(--muted)" data-i18n="nav-back">← головна</a>
+  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">UA</button>
+    <span style="color:rgba(255,255,255,.2)">|</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">EN</button>
+  </div>
 </nav>
 <div class="content">
-  <h1>Політика конфіденційності</h1>
-  <div class="date">Оновлено: Травень 2026</div>
+  <h1 data-i18n="h1">Політика конфіденційності</h1>
+  <div class="date" data-i18n="date">Оновлено: Травень 2026</div>
 
   <p>Сервіс toEssence розроблено з урахуванням принципу максимального захисту приватності користувачів (Privacy by Design). Збір даних мінімізовано, і інформація ніколи не продається третім особам.</p>
 
-  <h2>1. Які дані ми збираємо</h2>
+  <h2 data-i18n="h2_1">1. Які дані ми збираємо</h2>
   <p>На безкоштовному тарифі (Free):</p>
   <ul>
     <li><strong>Анонімний UUID</strong> — генерується локально у браузері користувача для ідентифікації сесії.</li>
@@ -45,7 +50,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
   </ul>
   <p>Ми категорично <strong>НЕ збираємо</strong>: ім'я, номери телефонів або точну IP-адресу (замість неї використовується безповоротний хеш), URL-адреси вебсторінок, повний вміст текстових статей або відео.</p>
 
-  <h2>2. Як ми використовуємо дані</h2>
+  <h2 data-i18n="h2_2">2. Як ми використовуємо дані</h2>
   <p>Інформація використовується виключно для забезпечення роботи сервісу:</p>
   <ul>
     <li>Контроль і підрахунок ліміту безкоштовних запитів (1000 фільтрів на календарний місяць).</li>
@@ -53,7 +58,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
     <li>Адаптація вартості Pro-версії відповідно до економічного регіону країни користувача.</li>
   </ul>
 
-  <h2>3. Дані Pro-підписки та платежі</h2>
+  <h2 data-i18n="h2_3">3. Дані Pro-підписки та платежі</h2>
   <ul>
     <li>Обробку платежів забезпечує сертифікований сервіс Stripe.</li>
     <li>Під час оплати Stripe збирає email та платіжні реквізити користувача.</li>
@@ -61,32 +66,76 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
     <li>Ми не маємо доступу до банківської картки чи електронної пошти користувача у Stripe.</li>
   </ul>
 
-  <h2>4. Передача даних третім сторонам</h2>
+  <h2 data-i18n="h2_4">4. Передача даних третім сторонам</h2>
   <ul>
     <li><strong>Google Gemini API</strong> — обробляє текст контенту для генерації тез. Дані, передані через API, є конфіденційними, не зберігаються для перегляду людьми та не використовуються для навчання моделей AI.</li>
     <li><strong>Supabase</strong> — захищена хмарна база даних у регіоні ЄС (EU-Central) для зберігання анонімної статистики.</li>
     <li><strong>Stripe</strong> — міжнародний процесинг платежів із найвищим рівнем безпеки PCI-DSS.</li>
   </ul>
 
-  <h2>5. Файли cookie та локальне сховище</h2>
+  <h2 data-i18n="h2_5">5. Файли cookie та локальне сховище</h2>
   <p>Ми не використовуємо маркетингові або трекінгові файли cookie. Для зберігання UUID та налаштувань інтерфейсу використовується локальне сховище браузера (Chrome Storage).</p>
 
-  <h2>6. Терміни зберігання та безпека</h2>
+  <h2 data-i18n="h2_6">6. Терміни зберігання та безпека</h2>
   <ul>
     <li>Детальні логи використання фільтрів автоматично видаляються через 90 днів.</li>
     <li>Агрегована знеособлена статистика зберігається безстроково.</li>
     <li>Застосовується шифрування даних під час передачі (HTTPS) та зберігання (AES-256).</li>
   </ul>
 
-  <h2>7. Права користувачів (включаючи GDPR)</h2>
+  <h2 data-i18n="h2_7">7. Права користувачів (включаючи GDPR)</h2>
   <p>Користувач має повне право керувати своїми даними. Для видалення всієї інформації з бази даних надішліть запит на <a href="mailto:hello@toessence.net">hello@toessence.net</a>, вказавши анонімний UUID (його можна скопіювати в налаштуваннях розширення).</p>
 
-  <h2>8. Зміни до політики конфіденційності</h2>
+  <h2 data-i18n="h2_8">8. Зміни до політики конфіденційності</h2>
   <p>Ми залишаємо за собою право оновлювати цей документ. У разі внесення істотних змін користувачі будуть повідомлені через інтерфейс розширення або на офіційному сайті.</p>
 
-  <h2>9. Контакти</h2>
+  <h2 data-i18n="h2_9">9. Контакти</h2>
   <p>Питання щодо приватності або обробки даних: <a href="mailto:hello@toessence.net">hello@toessence.net</a></p>
 </div>
 <footer>© 2026 toessence.net</footer>
+<script>
+const T_PRIVACY = {
+  uk: {
+    'nav-back': '← головна',
+    'h1': 'Політика конфіденційності',
+    'date': 'Оновлено: Травень 2026',
+    'h2_1': '1. Які дані ми збираємо',
+    'h2_2': '2. Як ми використовуємо дані',
+    'h2_3': '3. Дані Pro-підписки та платежі',
+    'h2_4': '4. Передача даних третім сторонам',
+    'h2_5': '5. Файли cookie та локальне сховище',
+    'h2_6': '6. Терміни зберігання та безпека',
+    'h2_7': '7. Права користувачів (включаючи GDPR)',
+    'h2_8': '8. Зміни до політики конфіденційності',
+    'h2_9': '9. Контакти',
+  },
+  en: {
+    'nav-back': '← home',
+    'h1': 'Privacy Policy',
+    'date': 'Updated: May 2026',
+    'h2_1': '1. What data we collect',
+    'h2_2': '2. How we use data',
+    'h2_3': '3. Pro subscription & payments',
+    'h2_4': '4. Third-party data sharing',
+    'h2_5': '5. Cookies & local storage',
+    'h2_6': '6. Retention & security',
+    'h2_7': '7. User rights (including GDPR)',
+    'h2_8': '8. Changes to this policy',
+    'h2_9': '9. Contact',
+  }
+};
+
+function setLang(lang) {
+  localStorage.setItem('toe_lang', lang);
+  if (lang === 'en') window.location.href = '/privacy-en.html';
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('toe_lang') || 'uk';
+  if (lang === 'en') window.location.href = '/privacy-en.html';
+  document.getElementById('btn-uk').style.color = '#22c55e';
+  document.getElementById('btn-en').style.color = 'rgba(255,255,255,.3)';
+});
+</script>
 </body>
 </html>
