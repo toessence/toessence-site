@@ -272,7 +272,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     background: var(--bg2);
     border: 1px solid var(--border);
     border-radius: 16px;
-    padding: 32px 28px;
+    padding: 20px 24px;
+    position: relative;
   }
   .plan.pro {
     border-color: var(--green-border);
@@ -299,17 +300,17 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   .plan-desc {
     font-size: 12px;
     color: var(--muted);
-    margin-bottom: 24px;
+    margin-bottom: 12px;
     line-height: 1.6;
   }
   .plan-list {
     list-style: none;
-    margin-bottom: 28px;
+    margin-bottom: 16px;
   }
   .plan-list li {
     font-size: 13px;
     color: rgba(255,255,255,.7);
-    padding: 7px 0;
+    padding: 4px 0;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -326,7 +327,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     font-size: 12px;
     font-weight: 500;
     letter-spacing: .06em;
-    padding: 12px;
+    padding: 8px;
     border-radius: 8px;
     text-decoration: none;
     transition: all .2s;
@@ -389,18 +390,20 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 </nav>
 
 <!-- HERO -->
-<div style="text-align:center;padding:80px 0 0"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your <span style="color:#22c55e">Time.</span></div></div>
+<div style="text-align:center;padding:40px 0 0"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your <span style="color:#22c55e">Time.</span></div></div>
 
-<div style="text-align:center;padding:40px 0 40px">
-  <div style="font-family:'Times New Roman',Times,serif;font-size:22px;font-weight:700;color:rgba(255,255,255,.28);margin-bottom:10px;letter-spacing:.04em;font-style:italic">BBC News &nbsp;·&nbsp; Deutsche Welle &nbsp;·&nbsp; The New York Times &nbsp;·&nbsp; Al Jazeera &nbsp;·&nbsp; Reuters</div>
+<div style="text-align:center;padding:4px 0 24px">
+  <div style="font-family:'Times New Roman',Times,serif;font-size:22px;font-weight:700;color:rgba(255,255,255,.28);margin-bottom:0px;letter-spacing:.04em;font-style:italic">BBC News &nbsp;·&nbsp; Deutsche Welle &nbsp;·&nbsp; The New York Times &nbsp;·&nbsp; Al Jazeera &nbsp;·&nbsp; Reuters</div>
   <div style="font-family:'Times New Roman',Times,serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.4)"><span data-i18n="media_tagline">Читайте світові медіа без жодних мовних бар'єрів</span></div>
 </div>
 
 <!-- PRICING -->
 <div class="pricing" id="pricing">
   <div class="plan">
-    <div class="plan-label">Free</div>
-    <div class="plan-price">$0</div>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between">
+      <div class="plan-label">Free</div>
+      <div class="plan-price" style="font-size:28px;margin:0">$0</div>
+    </div>
     <div class="plan-desc"><span data-i18n="free_desc">Без реєстрації та картки.<br>Просто встановіть.</span></div>
     <ul class="plan-list">
       <li><span class="chk">✓</span> <span data-i18n="free_f1">1000 Filters на місяць</span></li>
@@ -410,8 +413,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     <a href="https://chrome.google.com/webstore" class="btn-plan btn-free"><span data-i18n="free_btn">Встановити</span></a>
   </div>
   <div class="plan pro">
-    <div class="plan-label">Pro</div>
-    <div class="plan-price" id="proPriceMain">...</div>
+    <div style="display:flex;align-items:flex-start;justify-content:space-between">
+      <div class="plan-label">Pro</div>
+      <div class="plan-price" id="proPriceMain" style="font-size:28px;margin:0">...</div>
+    </div>
     <div class="plan-desc" id="proDescMain"></div>
     <ul class="plan-list">
       <li><span class="chk">✓</span> <span data-i18n="pro_f1">Необмежені Filters</span></li>
@@ -449,7 +454,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   })
 </script>
 
-<div style="text-align:center;padding:40px 24px 32px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px">
+<div style="text-align:center;padding:16px 24px 16px;border-top:1px solid rgba(255,255,255,.05);margin-top:16px">
   <p style="font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.06em;color:rgba(255,255,255,.35)">
     © 2026 toEssence · <a href="/about.html" style="color:rgba(255,255,255,.2);text-decoration:none;">About</a> · <a href="/contact.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Contact</a> · <a href="/privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Privacy</a> · Made in Ukraine
   </p>
