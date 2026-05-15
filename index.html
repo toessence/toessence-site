@@ -381,21 +381,22 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
 <nav id="nav">
   <a href="https://toessence.net/" class="nav-logo">to<em>E</em>ssence</a>
-  <div class="footer-links">
-    <a href="https://toessence.net/privacy.html" class="nav-link">Privacy</a>
-    <a href="mailto:hello@toessence.net" class="nav-link">Contact</a>
+  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">UA</button>
+    <span style="color:rgba(255,255,255,.2)">|</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">EN</button>
   </div>
 </nav>
 
 <!-- HERO -->
-<div style="text-align:center;padding:80px 0 24px"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your Time.</div></div>
+<div style="text-align:center;padding:80px 0 24px"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your <span style="color:#22c55e">Time.</span></div></div>
 
 <!-- PRICING -->
 <div class="pricing" id="pricing">
   <div class="plan">
     <div class="plan-label">Free</div>
     <div class="plan-price">$0</div>
-    <div class="plan-desc">Без реєстрації та картки.<br>Просто встановіть.</div>
+    <div class="plan-desc"><span data-i18n="free_desc">Без реєстрації та картки.<br>Просто встановіть.</span></div>
     <ul class="plan-list">
       <li><span class="chk">✓</span> 1000 Filters на місяць</li>
       <li><span class="chk">✓</span> Новини, YouTube, Google</li>
@@ -424,9 +425,9 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       <div class="demo-mag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round"><circle cx="10" cy="10" r="7"></circle><line x1="15" y1="15" x2="22" y2="22"></line></svg></div>
     </div>
     
-    <div class="demo-item" style="align-items:center"><svg width="26" height="26" style="margin-top:-10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="20" height="16" rx="2" fill="url(#ng)"></rect><rect x="4" y="8" width="16" height="4" rx="1" fill="white" opacity="0.9"></rect><rect x="4" y="14" width="8" height="1.5" rx="0.75" fill="white" opacity="0.7"></rect><rect x="4" y="17" width="6" height="1.5" rx="0.75" fill="white" opacity="0.7"></rect><rect x="14" y="14" width="6" height="4" rx="1" fill="white" opacity="0.3"></rect><defs><lineargradient id="ng" x1="2" y1="5" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#22c55e"></stop><stop offset="100%" stop-color="#16a34a"></stop></lineargradient></defs></svg><span style="flex:1">Суть статті за 2 секунди без переходу на сторінку</span></div>
-    <div class="demo-item" style="align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="#cc2200"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.4 2.8 12 2.8 12 2.8s-4.4 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.2v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.6 21.6 12 21.6 12 21.6s4.4 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"></path></svg><span style="flex:1">Аналіз відео за субтитрами</span></div>
-    <div class="demo-item" style="align-items:center"><svg width="22" height="22" style="margin-top:-4px" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#4285F4"/><text x="11" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="white">G</text></svg><span style="flex:1">Короткий зміст без переходу за посиланням</span></div>
+    <div class="demo-item" style="align-items:center"><svg width="26" height="26" style="margin-top:-10px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="5" width="20" height="16" rx="2" fill="url(#ng)"></rect><rect x="4" y="8" width="16" height="4" rx="1" fill="white" opacity="0.9"></rect><rect x="4" y="14" width="8" height="1.5" rx="0.75" fill="white" opacity="0.7"></rect><rect x="4" y="17" width="6" height="1.5" rx="0.75" fill="white" opacity="0.7"></rect><rect x="14" y="14" width="6" height="4" rx="1" fill="white" opacity="0.3"></rect><defs><lineargradient id="ng" x1="2" y1="5" x2="22" y2="21" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#22c55e"></stop><stop offset="100%" stop-color="#16a34a"></stop></lineargradient></defs></svg><span style="flex:1"><span data-i18n="demo1">Суть статті за 2 секунди без переходу на сторінку</span></span></div>
+    <div class="demo-item" style="align-items:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="#cc2200"><path d="M23 7s-.3-2-1.2-2.8c-1.1-1.2-2.4-1.2-3-1.3C16.4 2.8 12 2.8 12 2.8s-4.4 0-6.8.1c-.6.1-1.9.1-3 1.3C1.3 5 1 7 1 7S.7 9.1.7 11.2v2c0 2.1.3 4.2.3 4.2s.3 2 1.2 2.8c1.1 1.2 2.6 1.1 3.3 1.2C7.6 21.6 12 21.6 12 21.6s4.4 0 6.8-.2c.6-.1 1.9-.1 3-1.3.9-.8 1.2-2.8 1.2-2.8s.3-2.1.3-4.2v-2C23.3 9.1 23 7 23 7zM9.7 15.5V8.4l8.1 3.6-8.1 3.5z"></path></svg><span style="flex:1"><span data-i18n="demo2">Аналіз відео за субтитрами</span></span></div>
+    <div class="demo-item" style="align-items:center"><svg width="22" height="22" style="margin-top:-4px" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#4285F4"/><text x="11" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" font-weight="700" fill="white">G</text></svg><span style="flex:1"><span data-i18n="demo3">Короткий зміст без переходу за посиланням</span></span></div>
     <div class="demo-foot">toEssence</div>
   </div>
 </section>
@@ -445,7 +446,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
 <div style="text-align:center;padding:40px 24px 32px;border-top:1px solid rgba(255,255,255,.05);margin-top:40px">
   <p style="font-family:&#39;IBM Plex Mono&#39;,monospace;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.2)">
-    © 2026 toEssence · <a href="https://toessence.net/privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Privacy Policy</a> · <a href="mailto:hello@toessence.net" style="color:rgba(255,255,255,.2);text-decoration:none;">Contact</a> · Made in Ukraine 🇺🇦
+    © 2026 toEssence · <a href="/about.html" style="color:rgba(255,255,255,.2);text-decoration:none;">About</a> · <a href="/contact.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Contact</a> · <a href="/privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none;">Privacy</a> · Made in Ukraine 🇺🇦
   </p>
 </div>
 
@@ -494,5 +495,62 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       if (desc) desc.textContent = '';
     });
 })();
+</script>
+
+<script>
+const T = {
+  uk: {
+    slogan: 'Value Your <span style="color:#22c55e">Time.</span>',
+    heroSub: '',
+    free_desc: 'Без реєстрації та картки.<br>Просто встановіть.',
+    free_f1: '1000 Filters на місяць',
+    free_f2: 'Новини, YouTube, Google',
+    free_f3: 'Підтримує більшість мов світу',
+    free_btn: 'Встановити',
+    pro_desc: 'Від середнього доходу у вашій країні',
+    pro_f1: 'Необмежені Filters',
+    pro_f2: 'Новини, YouTube, Google',
+    pro_f3: 'Підтримує більшість мов світу',
+    pro_f4: 'Скасування підписки в будь-який момент',
+    pro_btn: 'Перейти на Pro',
+    demo1: 'Суть статті за 2 секунди без переходу на сторінку',
+    demo2: 'Аналіз відео за субтитрами',
+    demo3: 'Короткий зміст без переходу за посиланням',
+  },
+  en: {
+    slogan: 'Value Your <span style="color:#22c55e">Time.</span>',
+    free_desc: 'No registration or card.<br>Just install.',
+    free_f1: '1000 Filters per month',
+    free_f2: 'News, YouTube, Google',
+    free_f3: 'Supports most world languages',
+    free_btn: 'Install',
+    pro_desc: 'Based on average income in your country',
+    pro_f1: 'Unlimited Filters',
+    pro_f2: 'News, YouTube, Google',
+    pro_f3: 'Supports most world languages',
+    pro_f4: 'Cancel subscription anytime',
+    pro_btn: 'Go Pro',
+    demo1: 'Article summary in 2 seconds without opening the page',
+    demo2: 'Video analysis by subtitles',
+    demo3: 'Quick summary without following the link',
+  }
+};
+
+function setLang(lang) {
+  const t = T[lang];
+  localStorage.setItem('toe_lang', lang);
+  // Switcher style
+  document.getElementById('btn-uk').style.color = lang === 'uk' ? '#22c55e' : 'rgba(255,255,255,.3)';
+  document.getElementById('btn-en').style.color = lang === 'en' ? '#22c55e' : 'rgba(255,255,255,.3)';
+  // Texts
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key]) el.innerHTML = t[key];
+  });
+}
+
+// Init
+const lang = localStorage.getItem('toe_lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en');
+document.addEventListener('DOMContentLoaded', () => setLang(lang));
 </script>
 </body></html>

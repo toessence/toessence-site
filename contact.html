@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — toEssence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#080a0f;--bg2:#0d1018;--border:rgba(255,255,255,.06);--text:#d8d8d0;--muted:#52596a;--green:#22c55e;--gborder:rgba(34,197,94,.22)}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
+a{color:var(--green);text-decoration:none}
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#fff;cursor:pointer;transition:opacity .18s}
+.logo:hover{opacity:.75}
+.logo em{color:var(--green);font-style:normal}
+.nav-back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);transition:color .18s}
+.nav-back:hover{color:var(--text)}
+.main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+.card{background:var(--bg2);border:1px solid var(--gborder);border-radius:16px;padding:48px;max-width:480px;width:100%;text-align:center}
+h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:#fff;margin-bottom:12px}
+.sub{font-size:14px;color:var(--muted);margin-bottom:40px;line-height:1.6}
+.contact-item{display:flex;flex-direction:column;gap:6px;margin-bottom:28px}
+.contact-label{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.contact-link{font-size:16px;color:var(--green);transition:opacity .18s}
+.contact-link:hover{opacity:.75}
+footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
+  <a class="nav-back" href="https://toessence.net/">← головна</a>
+</nav>
+<div class="main">
+  <div class="card">
+    <h1>Контакти</h1>
+    <p class="sub">Маєте запитання, бізнес-пропозицію чи знайшли помилку? Пишіть нам — ми цінуємо ваш час і відповідаємо максимально швидко.</p>
+    <div class="contact-item">
+      <span class="contact-label">Загальні питання та пропозиції</span>
+      <a class="contact-link" href="mailto:hello@toessence.net">hello@toessence.net</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Технічна підтримка та баг-репорти</span>
+      <a class="contact-link" href="mailto:support@toessence.net">support@toessence.net</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Офіційний сайт</span>
+      <a class="contact-link" href="https://toessence.net">toessence.net</a>
+    </div>
+  </div>
+</div>
+<footer>© 2026 toessence.net · Made in Ukraine 🇺🇦</footer>
+</body>
+</html>
