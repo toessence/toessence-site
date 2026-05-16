@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -104,8 +105,9 @@ if (saved !== PWD) {
     document.body.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100vh;font-family:monospace;color:#f87171;background:#080a0f">Доступ заборонено</div>'
     throw new Error('Unauthorized')
   }
-</script>
-<script>
+  sessionStorage.setItem('toe_dash_auth', PWD)
+}
+
 const SUPABASE_URL = 'https://xstqpvvxiftgppxnzpzv.supabase.co'
 const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzdHFwdnZ4aWZ0Z3BweG56cHp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1Nzk2NjcsImV4cCI6MjA5NDE1NTY2N30.g4yGHVjyjBJhZw6VjpGHMJTQ7AGHHoxahYhVDSOMhTg' // ← вставити anon key
 
