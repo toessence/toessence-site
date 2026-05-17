@@ -510,7 +510,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       const p = PRICING[d.country_code] || {a:'2', c:'$'};
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
-      const period = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
+      const _lang = localStorage.getItem('toe_lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en');
+      const period = _lang === 'en' ? '/mo' : '/міс';
       if (el) el.textContent = p.a + ' ' + p.c + period;
       // Easy price = ~33% of Pro
       const easyEl = document.getElementById('easyPriceMain')
@@ -522,7 +523,8 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     .catch(() => {
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
-      const period2 = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
+      const _lang2 = localStorage.getItem('toe_lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en');
+      const period2 = _lang2 === 'en' ? '/mo' : '/міс';
       if (el) el.textContent = '300грн' + period2;
       if (desc) desc.textContent = '';
     });
@@ -591,10 +593,13 @@ function setLang(lang) {
   });
   // Update price period
   const priceEl = document.getElementById('proPriceMain');
-  if (priceEl && priceEl.textContent) {
-    const txt = priceEl.textContent;
-    const period = lang === 'en' ? '/mo' : '/міс';
-    // price update handled by ipapi
+  const easyEl2 = document.getElementById('easyPriceMain');
+  const period = lang === 'en' ? '/mo' : '/міс';
+  if (priceEl) {
+    priceEl.textContent = priceEl.textContent.replace(/\/mo|\/міс/, period);
+  }
+  if (easyEl2) {
+    easyEl2.textContent = easyEl2.textContent.replace(/\/mo|\/міс/, period);
   }
 }
 
