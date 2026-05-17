@@ -265,12 +265,17 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   /* PRICING */
   .pricing {
     padding: 32px 24px;
-    max-width: 760px;
+    max-width: 1000px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 16px;
   }
+  .plan.easy {
+    border-color: rgba(59,130,246,.3);
+    background: linear-gradient(135deg, #0d1018 0%, #090f18 100%);
+  }
+  .plan.easy .plan-label { color: #60a5fa; }
   .plan {
     background: var(--bg2);
     border: 1px solid var(--border);
@@ -405,29 +410,38 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
   <div class="plan">
     <div style="display:flex;align-items:flex-start;justify-content:space-between">
       <div class="plan-label">Free</div>
-      <div class="plan-price" style="font-size:28px;margin:0">$0</div>
+      <div class="plan-price" style="font-size:18px;margin:0;color:rgba(255,255,255,.4)">$0</div>
     </div>
-    <div class="plan-desc"><span data-i18n="free_desc">Без реєстрації та картки.<br>Просто встановіть.</span></div>
     <ul class="plan-list">
-      <li><span class="chk">✓</span> <span data-i18n="free_f1">1000 Filters на місяць</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="free_f1">10 Filters на день</span></li>
       <li><span class="chk">✓</span> <span data-i18n="free_f2">Новини, YouTube, Google</span></li>
       <li><span class="chk">✓</span> <span data-i18n="free_f3">Підтримує більшість мов світу</span></li>
     </ul>
     <a href="https://chrome.google.com/webstore" class="btn-plan btn-free"><span data-i18n="free_btn">Встановити</span></a>
   </div>
+  <div class="plan easy">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between">
+      <div class="plan-label">Easy</div>
+      <div class="plan-price" id="easyPriceMain" style="font-size:22px;margin:0">100грн/міс</div>
+    </div>
+    <ul class="plan-list">
+      <li><span class="chk">✓</span> <span data-i18n="easy_f1">50 Filters на день</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="easy_f2">Новини, YouTube, Google</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="easy_f3">Підтримує більшість мов світу</span></li>
+    </ul>
+    <a href="https://toessence.net/pro.html?plan=easy" class="btn-plan btn-pro" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.4);color:#60a5fa"><span data-i18n="easy_btn">Перейти на Easy</span></a>
+  </div>
   <div class="plan pro">
     <div style="display:flex;align-items:flex-start;justify-content:space-between">
       <div class="plan-label">Pro</div>
-      <div class="plan-price" id="proPriceMain" style="font-size:28px;margin:0">...</div>
+      <div class="plan-price" id="proPriceMain" style="font-size:22px;margin:0">300грн/міс</div>
     </div>
-    <div class="plan-desc" id="proDescMain"></div>
     <ul class="plan-list">
-      <li><span class="chk">✓</span> <span data-i18n="pro_f1">Необмежені Filters</span></li>
+      <li><span class="chk">✓</span> <span data-i18n="pro_f1">200 Filters на день</span></li>
       <li><span class="chk">✓</span> <span data-i18n="pro_f2">Новини, YouTube, Google</span></li>
       <li><span class="chk">✓</span> <span data-i18n="pro_f3">Підтримує більшість мов світу</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="pro_f4">Скасування підписки в будь-який момент</span></li>
     </ul>
-    <a href="https://toessence.net/pro.html" class="btn-plan btn-pro"><span data-i18n="pro_btn">Перейти на Pro</span></a>
+    <a href="https://toessence.net/pro.html?plan=pro" class="btn-plan btn-pro"><span data-i18n="pro_btn">Перейти на Pro</span></a>
   </div>
 </div>
 
@@ -498,6 +512,10 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       const desc = document.getElementById('proDescMain');
       const period = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
       if (el) el.textContent = p.a + ' ' + p.c + period;
+      // Easy price = ~33% of Pro
+      const easyEl = document.getElementById('easyPriceMain')
+      const easyAmt = Math.round(parseFloat(p.a) * 0.35 * 10) / 10
+      if (easyEl) easyEl.textContent = easyAmt + ' ' + p.c + period;
       if (desc) desc.textContent = '';
       if (desc) desc.textContent = '';
     })
@@ -505,7 +523,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
       const period2 = localStorage.getItem('toe_lang') === 'en' ? '/mo' : '/міс';
-      if (el) el.textContent = '$2' + period2;
+      if (el) el.textContent = '300грн' + period2;
       if (desc) desc.textContent = '';
     });
 })();
@@ -568,7 +586,7 @@ function setLang(lang) {
   if (priceEl && priceEl.textContent) {
     const txt = priceEl.textContent;
     const period = lang === 'en' ? '/mo' : '/міс';
-    priceEl.textContent = txt.replace('/mo', period).replace('/міс', period);
+    // price update handled by ipapi
   }
 }
 
