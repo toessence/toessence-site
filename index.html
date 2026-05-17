@@ -510,7 +510,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       const p = PRICING[d.country_code] || {a:'2', c:'$'};
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
-      const _lang = localStorage.getItem('toe_lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en');
+      const _lang = localStorage.getItem('toe_lang') || 'en';
       const period = _lang === 'en' ? '/mo' : '/міс';
       if (el) el.textContent = p.a + ' ' + p.c + period;
       // Easy price = ~33% of Pro
@@ -523,7 +523,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     .catch(() => {
       const el = document.getElementById('proPriceMain');
       const desc = document.getElementById('proDescMain');
-      const _lang2 = localStorage.getItem('toe_lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en');
+      const _lang2 = localStorage.getItem('toe_lang') || 'en';
       const period2 = _lang2 === 'en' ? '/mo' : '/міс';
       if (el) el.textContent = '300грн' + period2;
       if (desc) desc.textContent = '';
@@ -604,7 +604,7 @@ function setLang(lang) {
 }
 
 // Init
-const lang = localStorage.getItem('toe_lang') || (navigator.language.startsWith('uk') ? 'uk' : 'en');
+const lang = localStorage.getItem('toe_lang') || 'en';
 document.addEventListener('DOMContentLoaded', () => setLang(lang));
 </script>
 </body></html>
