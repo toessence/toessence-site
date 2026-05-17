@@ -489,7 +489,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
     CZ:{a:'84',c:'CZK'},PL:{a:'14',c:'zł'},HU:{a:'1000',c:'HUF'},PT:{a:'2.5',c:'€'},
     GR:{a:'2',c:'€'},BG:{a:'4',c:'BGN'},RO:{a:'10',c:'RON'},TR:{a:'69',c:'₺'},
     RS:{a:'210',c:'RSD'},MY:{a:'9',c:'MYR'},RU:{a:'160',c:'₽'},MX:{a:'28',c:'MXN'},
-    UA:{a:'41',c:'грн'},IN:{a:'72',c:'₹'},VN:{a:'20500',c:'₫'},PH:{a:'37',c:'₱'},
+    UA:{a:'300',c:'грн'},IN:{a:'72',c:'₹'},VN:{a:'20500',c:'₫'},PH:{a:'37',c:'₱'},
     ID:{a:'8500',c:'Rp'},PK:{a:'100',c:'₨'},NG:{a:'240',c:'₦'},AR:{a:'1300',c:'ARS'},
     CL:{a:'1300',c:'CLP'},CO:{a:'3800',c:'COP'},KZ:{a:'580',c:'₸'},TH:{a:'44',c:'฿'},
     EG:{a:'13',c:'EGP'},MA:{a:'9.5',c:'MAD'},KE:{a:'94',c:'KES'},ZA:{a:'54',c:'ZAR'},
@@ -515,7 +515,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
       if (el) el.textContent = p.a + ' ' + p.c + period;
       // Easy price = ~33% of Pro
       const easyEl = document.getElementById('easyPriceMain')
-      const easyAmt = Math.round(parseFloat(p.a) * 0.35 * 10) / 10
+      const easyAmt = Math.round(parseFloat(p.a) * 0.333)
       if (easyEl) easyEl.textContent = easyAmt + ' ' + p.c + period;
       if (desc) desc.textContent = '';
       if (desc) desc.textContent = '';
