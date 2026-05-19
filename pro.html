@@ -217,7 +217,7 @@ async function startCheckout() {
 
   try {
     // Call your backend to create Stripe Checkout session
-    const resp = await fetch('https://YOUR_PROJECT.supabase.co/functions/v1/create-checkout', {
+    const resp = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ uuid, country, priceId: p.stripePrice }),

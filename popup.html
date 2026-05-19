@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>toEssence</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{width:260px;background:#080a0f;color:#d8d8d0;font-family:'IBM Plex Sans',-apple-system,sans-serif;font-size:13px}
+
+.header{padding:14px 16px 12px;border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:Georgia,serif;font-size:19px;font-weight:700;color:#fff}
+.logo span{color:#22c55e}
+.toggle{position:relative;width:36px;height:20px}
+.toggle input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:rgba(255,255,255,.1);border-radius:10px;cursor:pointer;transition:background .25s}
+.slider::after{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:rgba(255,255,255,.4);border-radius:50%;transition:transform .25s,background .25s}
+input:checked+.slider{background:rgba(34,197,94,.35)}
+input:checked+.slider::after{transform:translateX(16px);background:#22c55e}
+
+.block{padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.06)}
+.lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:8px}
+.big{font-family:Georgia,serif;font-size:34px;color:#fff;line-height:1;margin-bottom:6px}
+.big sub{font-size:14px;color:rgba(255,255,255,.3);font-family:inherit}
+.bar{height:3px;background:rgba(255,255,255,.06);border-radius:2px;overflow:hidden;margin-bottom:5px}
+.fill{height:100%;background:#22c55e;border-radius:2px;transition:width .3s}
+.note{font-size:11px;color:rgba(255,255,255,.3);margin-bottom:10px}
+
+.pro-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pro-dot{width:6px;height:6px;border-radius:50%;background:#22c55e}
+.pro-txt{font-size:12px;color:rgba(34,197,94,.85)}
+
+.upgrade-btn{display:block;width:100%;padding:9px;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.28);border-radius:7px;color:#22c55e;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.05em;text-align:center;text-decoration:none;transition:background .18s}
+.upgrade-btn:hover{background:rgba(34,197,94,.18)}
+.price-note{font-size:10px;color:rgba(255,255,255,.22);text-align:center;margin-top:5px}
+
+.footer{padding:9px 16px;display:flex;align-items:center;justify-content:space-between}
+.fv{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(255,255,255,.15)}
+.fl{font-family:'IBM Plex Mono',monospace;font-size:9px;color:rgba(34,197,94,.4);text-decoration:none}
+.fl:hover{color:rgba(34,197,94,.8)}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">to<span>E</span>ssence</div>
+  <label class="toggle">
+    <input type="checkbox" id="tog" checked>
+    <span class="slider"></span>
+  </label>
+</div>
+
+<div class="block" id="filtersBlock">
+  <div class="lbl">Filters</div>
+  <div class="big"><span id="used">0</span> <sub>/ <span id="limit">10</span></sub></div>
+  <div class="bar"><div class="fill" id="fill" style="width:0%"></div></div>
+  <div class="note" id="note">FILTERS · скидання через 24 год</div></div>
+</div>
+
+<div class="block">
+  <a class="upgrade-btn" id="upgradeBtnMain" href="https://toessence.net/pro" target="_blank">Перейти на Pro</a>
+</div>
+
+<div class="block" id="proBadge" style="display:none">
+  <div class="pro-row"><div class="pro-dot"></div><div class="pro-txt">Pro · Необмежені Filters</div></div></div>
+</div>
+
+<div class="block" id="upgradeBlock" style="display:none">
+  <a class="upgrade-btn" id="upgradeBtn" href="https://toessence.net/pro" target="_blank">Перейти на Pro</a>
+  <div class="price-note" id="upgradePrice">Необмежені Filters</div>
+</div>
+
+<div class="footer">
+  <span class="fv">v4.9</span>
+  <a class="fl" href="https://toessence.net" target="_blank">toessence.net</a>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>
