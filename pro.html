@@ -121,10 +121,7 @@ function applyPricing(c) {
 
 // Якщо country не передано в URL — визначаємо по IP
 if (!country) {
-  fetch('https://ipapi.co/json/')
-    .then(r => r.json())
-    .then(d => { applyPricing(d.country_code || 'UA') })
-    .catch(() => { applyPricing('UA') });
+  applyPricing('DEFAULT');
 } else {
   applyPricing(country);
 }
