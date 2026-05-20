@@ -232,7 +232,10 @@ async function startCheckout() {
   try {
     const res = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzdHFwdnZ4aWZ0Z3BweG56cHp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1Nzk2NjcsImV4cCI6MjA5NDE1NTY2N30.g4yGHVjyjBJhZw6VjpGHMJTQ7AGHHoxahYhVDSOMhTg'
+      },
       body: JSON.stringify({ uuid, plan })
     })
     const data = await res.json()
