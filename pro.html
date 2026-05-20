@@ -71,16 +71,17 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
     </div>
 
     <div class="features">
-      <div class="feature">Необмежені Filters</div>
+      <div class="feature">150 Filters на день</div>
       <div class="feature">Новини, YouTube, Google</div>
-      <div class="feature">Підтримує більшість мов світу</div>
+    <div class="feature-item">✓ Режим читання</div>
+      <div class="feature">Мультимовність</div>
       <div class="feature">Скасування підписки в будь-який момент</div>
     </div>
 
     <button class="checkout-btn" id="checkoutBtn" onclick="startCheckout()">
       Оформити Pro підписку
     </button>
-    <div class="secure-note">Безпечна оплата через <span>Stripe</span> · Картка, Google Pay, Apple Pay</div>
+    <div class="secure-note">Безпечна оплата через <span>Lemon Squeezy</span> · Картка, Google Pay, Apple Pay</div>
   </div>
 </div>
 
@@ -101,7 +102,7 @@ const country = params.get('country') || '';
 const plan = params.get('plan') || 'pro'; // 'easy' або 'pro'
 
 function getPricing(c) {
-  const entry = pricing[c] || pricing['DEFAULT'] || { amount: '2', currency: '$', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
+  const entry = pricing[c] || pricing['DEFAULT'] || { amount: '2', currency: '€' };
   // Якщо є розбивка easy/pro
   if (entry.easy && entry.pro) return plan === 'easy' ? entry.easy : entry.pro;
   return entry;
@@ -123,100 +124,12 @@ if (!country) {
   applyPricing(country);
 }
 
-// Country pricing — 0.2% від середньої зарплати (Numbeo 2025)
 const pricing = {
-  CH: { amount: '14',    currency: 'CHF', stripePrice: 'price_CH_PLACEHOLDER' },
-  LU: { amount: '10',    currency: '€',   note: '0.2% du salaire moyen',  stripePrice: 'price_LU_PLACEHOLDER' },
-  SG: { amount: '12',    currency: 'SGD', stripePrice: 'price_SG_PLACEHOLDER' },
-  US: { amount: '8.5',   currency: '$',   note: '0.2% of average salary', stripePrice: 'price_US_PLACEHOLDER' },
-  DK: { amount: '59',    currency: 'DKK', stripePrice: 'price_DK_PLACEHOLDER' },
-  NO: { amount: '89',    currency: 'NOK', stripePrice: 'price_NO_PLACEHOLDER' },
-  AU: { amount: '13',    currency: 'AU$', stripePrice: 'price_AU_PLACEHOLDER' },
-  IL: { amount: '29',    currency: '₪',   note: '0.2% of average salary', stripePrice: 'price_IL_PLACEHOLDER' },
-  NL: { amount: '7',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_NL_PLACEHOLDER' },
-  IE: { amount: '6.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_IE_PLACEHOLDER' },
-  DE: { amount: '6.5',   currency: '€',   note: '0.2% des Durchschnittsgehalts', stripePrice: 'price_DE_PLACEHOLDER' },
-  GB: { amount: '5',     currency: '£',   note: '0.2% of average salary', stripePrice: 'price_GB_PLACEHOLDER' },
-  SE: { amount: '68',    currency: 'SEK', stripePrice: 'price_SE_PLACEHOLDER' },
-  BE: { amount: '5.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_BE_PLACEHOLDER' },
-  FI: { amount: '5.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_FI_PLACEHOLDER' },
-  AT: { amount: '5.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_AT_PLACEHOLDER' },
-  CA: { amount: '8.5',   currency: 'CA$', stripePrice: 'price_CA_PLACEHOLDER' },
-  NZ: { amount: '10',    currency: 'NZ$', stripePrice: 'price_NZ_PLACEHOLDER' },
-  FR: { amount: '5.5',   currency: '€',   note: '0.2% du salaire moyen',  stripePrice: 'price_FR_PLACEHOLDER' },
-  KR: { amount: '5800',  currency: '₩',   note: '0.2% of average salary', stripePrice: 'price_KR_PLACEHOLDER' },
-  ES: { amount: '4',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_ES_PLACEHOLDER' },
-  IT: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_IT_PLACEHOLDER' },
-  JP: { amount: '580',   currency: '¥',   note: '0.2% of average salary', stripePrice: 'price_JP_PLACEHOLDER' },
-  CZ: { amount: '84',    currency: 'CZK', stripePrice: 'price_CZ_PLACEHOLDER' },
-  PL: { amount: '14',    currency: 'zł',  note: '0.2% średniej pensji',   stripePrice: 'price_PL_PLACEHOLDER' },
-  HU: { amount: '1000',  currency: 'HUF', stripePrice: 'price_HU_PLACEHOLDER' },
-  PT: { amount: '2.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_PT_PLACEHOLDER' },
-  GR: { amount: '2',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_GR_PLACEHOLDER' },
-  BG: { amount: '4',     currency: 'BGN', stripePrice: 'price_BG_PLACEHOLDER' },
-  RO: { amount: '10',    currency: 'RON', stripePrice: 'price_RO_PLACEHOLDER' },
-  TR: { amount: '69',    currency: '₺',   note: '0.2% of average salary', stripePrice: 'price_TR_PLACEHOLDER' },
-  RS: { amount: '210',   currency: 'RSD', stripePrice: 'price_RS_PLACEHOLDER' },
-  MY: { amount: '9',     currency: 'MYR', stripePrice: 'price_MY_PLACEHOLDER' },
-  RU: { amount: '160',   currency: '₽',   note: '0.2% of average salary', stripePrice: 'price_RU_PLACEHOLDER' },
-  MX: { amount: '28',    currency: 'MXN', stripePrice: 'price_MX_PLACEHOLDER' },
-  UA: { easy: { amount: '100', currency: 'грн', stripePrice: 'price_UA_EASY_PLACEHOLDER' }, pro: { amount: '300', currency: 'грн', stripePrice: 'price_UA_PRO_PLACEHOLDER' } },
-  IN: { amount: '72',    currency: '₹',   note: '0.2% of average salary', stripePrice: 'price_IN_PLACEHOLDER' },
-  VN: { amount: '20500', currency: '₫',   note: '0.2% of average salary', stripePrice: 'price_VN_PLACEHOLDER' },
-  PH: { amount: '37',    currency: '₱',   note: '0.2% of average salary', stripePrice: 'price_PH_PLACEHOLDER' },
-  ID: { amount: '8500',  currency: 'Rp',  note: '0.2% of average salary', stripePrice: 'price_ID_PLACEHOLDER' },
-  PK: { amount: '100',   currency: '₨',   note: '0.2% of average salary', stripePrice: 'price_PK_PLACEHOLDER' },
-  NG: { amount: '240',   currency: '₦',   note: '0.2% of average salary', stripePrice: 'price_NG_PLACEHOLDER' },
-  AR: { amount: '1300',  currency: 'ARS', stripePrice: 'price_AR_PLACEHOLDER' },
-  CL: { amount: '1300',  currency: 'CLP', stripePrice: 'price_CL_PLACEHOLDER' },
-  CO: { amount: '3800',  currency: 'COP', stripePrice: 'price_CO_PLACEHOLDER' },
-  KZ: { amount: '580',   currency: '₸',   note: '0.2% of average salary', stripePrice: 'price_KZ_PLACEHOLDER' },
-  TH: { amount: '44',    currency: '฿',   note: '0.2% of average salary', stripePrice: 'price_TH_PLACEHOLDER' },
-  EG: { amount: '13',    currency: 'EGP', stripePrice: 'price_EG_PLACEHOLDER' },
-  MA: { amount: '9.5',   currency: 'MAD', stripePrice: 'price_MA_PLACEHOLDER' },
-  KE: { amount: '94',    currency: 'KES', stripePrice: 'price_KE_PLACEHOLDER' },
-  ZA: { amount: '54',    currency: 'ZAR', stripePrice: 'price_ZA_PLACEHOLDER' },
-  SK: { amount: '2.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_SK_PLACEHOLDER' },
-  HR: { amount: '3',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_HR_PLACEHOLDER' },
-  LT: { amount: '3',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_LT_PLACEHOLDER' },
-  LV: { amount: '2.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_LV_PLACEHOLDER' },
-  EE: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_EE_PLACEHOLDER' },
-  SI: { amount: '3',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_SI_PLACEHOLDER' },
-  MT: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_MT_PLACEHOLDER' },
-  CY: { amount: '3.5',   currency: '€',   note: '0.2% of average salary', stripePrice: 'price_CY_PLACEHOLDER' },
-  BA: { amount: '3',     currency: 'BAM', stripePrice: 'price_BA_PLACEHOLDER' },
-  ME: { amount: '2',     currency: '€',   note: '0.2% of average salary', stripePrice: 'price_ME_PLACEHOLDER' },
-  MK: { amount: '88',    currency: 'MKD', stripePrice: 'price_MK_PLACEHOLDER' },
-  AL: { amount: '140',   currency: 'ALL', stripePrice: 'price_AL_PLACEHOLDER' },
-  MD: { amount: '27',    currency: 'MDL', stripePrice: 'price_MD_PLACEHOLDER' },
-  BY: { amount: '5',     currency: 'BYN', stripePrice: 'price_BY_PLACEHOLDER' },
-  GE: { amount: '3',     currency: 'GEL', stripePrice: 'price_GE_PLACEHOLDER' },
-  AM: { amount: '550',   currency: 'AMD', stripePrice: 'price_AM_PLACEHOLDER' },
-  AZ: { amount: '1.5',   currency: 'AZN', stripePrice: 'price_AZ_PLACEHOLDER' },
-  UZ: { amount: '12700', currency: 'UZS', stripePrice: 'price_UZ_PLACEHOLDER' },
-  BR: { amount: '5.5',   currency: 'BRL', stripePrice: 'price_BR_PLACEHOLDER' },
-  PE: { amount: '4.5',   currency: 'PEN', stripePrice: 'price_PE_PLACEHOLDER' },
-  BO: { amount: '6',     currency: 'BOB', stripePrice: 'price_BO_PLACEHOLDER' },
-  DO: { amount: '72',    currency: 'DOP', stripePrice: 'price_DO_PLACEHOLDER' },
-  CR: { amount: '1100',  currency: 'CRC', stripePrice: 'price_CR_PLACEHOLDER' },
-  UY: { amount: '85',    currency: 'UYU', stripePrice: 'price_UY_PLACEHOLDER' },
-  CN: { amount: '15',    currency: 'CNY', stripePrice: 'price_CN_PLACEHOLDER' },
-  TW: { amount: '110',   currency: 'TWD', stripePrice: 'price_TW_PLACEHOLDER' },
-  JO: { amount: '1',     currency: 'JOD', stripePrice: 'price_JO_PLACEHOLDER' },
-  IQ: { amount: '1500',  currency: 'IQD', stripePrice: 'price_IQ_PLACEHOLDER' },
-  SA: { amount: '15',    currency: 'SAR', stripePrice: 'price_SA_PLACEHOLDER' },
-  AE: { amount: '23',    currency: 'AED', stripePrice: 'price_AE_PLACEHOLDER' },
-  KW: { amount: '1.9',   currency: 'KWD', stripePrice: 'price_KW_PLACEHOLDER' },
-  BH: { amount: '1.7',   currency: 'BHD', stripePrice: 'price_BH_PLACEHOLDER' },
-  OM: { amount: '1.9',   currency: 'OMR', stripePrice: 'price_OM_PLACEHOLDER' },
-  LK: { amount: '130',   currency: 'LKR', stripePrice: 'price_LK_PLACEHOLDER' },
-  NP: { amount: '56',    currency: 'NPR', stripePrice: 'price_NP_PLACEHOLDER' },
-  BD: { amount: '52',    currency: 'BDT', stripePrice: 'price_BD_PLACEHOLDER' },
-  TN: { amount: '2',     currency: 'TND', stripePrice: 'price_TN_PLACEHOLDER' },
-  DZ: { amount: '83',    currency: 'DZD', stripePrice: 'price_DZ_PLACEHOLDER' },
+  UA: { easy: { amount: '2', currency: '€' }, pro: { amount: '5', currency: '€' } },
+  DEFAULT: { easy: { amount: '2', currency: '€' }, pro: { amount: '5', currency: '€' } }
 };
 
-const p = pricing[country] || { amount: '2', currency: '$', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
+const p = pricing[country] || { amount: '2', currency: '€' };
 
 document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '/місяць</span>';
 
