@@ -71,7 +71,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
     </div>
 
     <div class="features">
-      <div class="feature">150 Filters на день</div>
+      <div class="feature" id="filtersFeature">150 Filters на день</div>
       <div class="feature">Новини, YouTube, Google</div>
     <div class="feature">Режим читання</div>
       <div class="feature">Мультимовність</div>
@@ -100,6 +100,11 @@ const params = new URLSearchParams(location.search);
 const uuid = params.get('uuid') || '';
 const country = params.get('country') || '';
 const plan = params.get('plan') || 'pro'; // 'easy' або 'pro'
+// Оновлюємо кількість фільтрів
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('filtersFeature')
+  if (el) el.textContent = (plan === 'easy' ? '50' : '150') + ' Filters на день'
+})
 
 function getPricing(c) {
   const entry = pricing[c] || pricing['DEFAULT'] || { amount: '2', currency: '€' };
