@@ -98,18 +98,29 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
 const params = new URLSearchParams(location.search);
 const uuid = params.get('uuid') || '';
 const country = params.get('country') || '';
+const plan = params.get('plan') || 'pro'; // 'easy' або 'pro'
+
+function getPricing(c) {
+  const entry = pricing[c] || pricing['DEFAULT'] || { amount: '2', currency: '$', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
+  // Якщо є розбивка easy/pro
+  if (entry.easy && entry.pro) return plan === 'easy' ? entry.easy : entry.pro;
+  return entry;
+}
+
+function applyPricing(c) {
+  const p = getPricing(c);
+  document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '/місяць</span>';
+  window._currentPricing = p;
+}
 
 // Якщо country не передано в URL — визначаємо по IP
 if (!country) {
   fetch('https://ipapi.co/json/')
     .then(r => r.json())
-    .then(d => {
-      const c = d.country_code || 'DEFAULT';
-      const p = pricing[c] || { amount: '2', currency: '$', stripePrice: 'price_DEFAULT_PLACEHOLDER' };
-      document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '/місяць</span>';
-      
-    })
-    .catch(() => {});
+    .then(d => { applyPricing(d.country_code || 'UA') })
+    .catch(() => { applyPricing('UA') });
+} else {
+  applyPricing(country);
 }
 
 // Country pricing — 0.2% від середньої зарплати (Numbeo 2025)
@@ -149,7 +160,7 @@ const pricing = {
   MY: { amount: '9',     currency: 'MYR', stripePrice: 'price_MY_PLACEHOLDER' },
   RU: { amount: '160',   currency: '₽',   note: '0.2% of average salary', stripePrice: 'price_RU_PLACEHOLDER' },
   MX: { amount: '28',    currency: 'MXN', stripePrice: 'price_MX_PLACEHOLDER' },
-  UA: { amount: '41',    currency: 'грн', stripePrice: 'price_UA_PLACEHOLDER' },
+  UA: { easy: { amount: '100', currency: 'грн', stripePrice: 'price_UA_EASY_PLACEHOLDER' }, pro: { amount: '300', currency: 'грн', stripePrice: 'price_UA_PRO_PLACEHOLDER' } },
   IN: { amount: '72',    currency: '₹',   note: '0.2% of average salary', stripePrice: 'price_IN_PLACEHOLDER' },
   VN: { amount: '20500', currency: '₫',   note: '0.2% of average salary', stripePrice: 'price_VN_PLACEHOLDER' },
   PH: { amount: '37',    currency: '₱',   note: '0.2% of average salary', stripePrice: 'price_PH_PLACEHOLDER' },
@@ -211,6 +222,30 @@ document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font
 
 
 async function startCheckout() {
+  const btn = document.getElementById('checkoutBtn')
+  btn.textContent = 'Завантаження...'
+  btn.disabled = true
+
+  // Беремо uuid з chrome storage якщо доступний
+  let uuid = localStorage.getItem('toe_uuid') || ''
+
+  try {
+    const res = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ uuid, plan })
+    })
+    const data = await res.json()
+    if (data.url) {
+      window.location.href = data.url
+    } else {
+      throw new Error(data.error || 'Помилка')
+    }
+  } catch (e) {
+    btn.textContent = 'Помилка. Спробуй знову'
+    btn.disabled = false
+  }
+  return // старий код нижче не виконується
   const btn = document.getElementById('checkoutBtn');
   btn.textContent = 'Перенаправляємо на оплату...';
   btn.disabled = true;
@@ -220,7 +255,7 @@ async function startCheckout() {
     const resp = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ uuid, country, priceId: p.stripePrice }),
+      body: JSON.stringify({ uuid, country, plan, priceId: (window._currentPricing || {}).stripePrice || 'price_DEFAULT_PLACEHOLDER' }),
     });
     const data = await resp.json();
     if (data.url) {
