@@ -66,7 +66,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
     
 
     <div class="price-display">
-      <div class="price-amount" id="priceAmount">3<span style="font-size:22px;color:var(--muted)">$/місяць</span></div>
+      <div class="price-amount" id="priceAmount"><span id="planPrice">€2</span><span style="font-size:22px;color:var(--muted)">/місяць</span></div>
       
     </div>
 
@@ -79,7 +79,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
     </div>
 
     <button class="checkout-btn" id="checkoutBtn" onclick="startCheckout()">
-      Оформити Pro підписку
+      Оформити підписку
     </button>
     <div class="secure-note">Безпечна оплата <span>Lemon Squeezy</span> · Картка, Google Pay, Apple Pay</div>
   </div>
@@ -99,7 +99,8 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
 const params = new URLSearchParams(location.search);
 const uuid = params.get('uuid') || '';
 const country = params.get('country') || '';
-const plan = params.get('plan') || 'pro'; // 'easy' або 'pro'
+const plan = params.get('plan') || 'pro';
+document.addEventListener('DOMContentLoaded', () => { const el = document.getElementById('planPrice'); if (el) el.textContent = plan === 'easy' ? '€2' : '€5'; }); // 'easy' або 'pro'
 // Оновлюємо кількість фільтрів
 document.addEventListener('DOMContentLoaded', () => {
   const el = document.getElementById('filtersFeature')
