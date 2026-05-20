@@ -227,7 +227,7 @@ async function startCheckout() {
   btn.disabled = true
 
   // Беремо uuid з chrome storage якщо доступний
-  let uuid = localStorage.getItem('toe_uuid') || ''
+  let uuid = localStorage.getItem('toe_uuid') || 'web_' + Math.random().toString(36).slice(2)
 
   try {
     const res = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
