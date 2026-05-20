@@ -245,29 +245,6 @@ async function startCheckout() {
     btn.textContent = 'Помилка. Спробуй знову'
     btn.disabled = false
   }
-  return // старий код нижче не виконується
-  const btn = document.getElementById('checkoutBtn');
-  btn.textContent = 'Перенаправляємо на оплату...';
-  btn.disabled = true;
-
-  try {
-    // Call your backend to create Stripe Checkout session
-    const resp = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ uuid, country, plan, priceId: (window._currentPricing || {}).stripePrice || 'price_DEFAULT_PLACEHOLDER' }),
-    });
-    const data = await resp.json();
-    if (data.url) {
-      window.location.href = data.url;
-    } else {
-      throw new Error('No checkout URL');
-    }
-  } catch (e) {
-    btn.textContent = 'Оформити Pro підписку';
-    btn.disabled = false;
-    alert('Помилка. Спробуйте ще раз.');
-  }
 }
 </script>
 
