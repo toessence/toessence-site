@@ -57,31 +57,31 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
 
 <nav>
   <a class="logo" href="https://toessence.net/" style="text-decoration:none;cursor:pointer;transition:opacity .18s" onmouseover="this.style.opacity='.75'" onmouseout="this.style.opacity='1'">to<em>E</em>ssence</a>
-  <a class="nav-back" href="https://toessence.net/">← повернутись</a>
+  <a class="nav-back" href="https://toessence.net/" id="t-back">← повернутись</a>
 </nav>
 
 <div class="main">
-  <div class="slogan">Value Your <span style="color:#22c55e">Time.</span></div>
+  <div class="slogan" id="t-slogan">Value Your <span style="color:#22c55e">Time.</span></div>
   <div class="card">
     
 
     <div class="price-display">
-      <div class="price-amount" id="priceAmount"><span id="planPrice">€2</span><span style="font-size:22px;color:var(--muted)">/місяць</span></div>
+      <div class="price-amount" id="priceAmount"><span id="planPrice">€2</span><span style="font-size:22px;color:var(--muted)" id="t-period">/місяць</span></div>
       
     </div>
 
     <div class="features">
       <div class="feature" id="filtersFeature">150 Filters на день</div>
-      <div class="feature">Новини, YouTube, Google</div>
-    <div class="feature">Режим читання</div>
-      <div class="feature">Мультимовність</div>
-      <div class="feature">Скасування підписки в будь-який момент</div>
+      <div class="feature" id="t-f2">Новини, YouTube, Google</div>
+    <div class="feature" id="t-f3">Режим читання</div>
+      <div class="feature" id="t-f4">Мультимовність</div>
+      <div class="feature" id="t-f5">Скасування підписки в будь-який момент</div>
     </div>
 
     <button class="checkout-btn" id="checkoutBtn" onclick="startCheckout()">
-      Оформити підписку
+      <span id="t-btn">Оформити підписку</span>
     </button>
-    <div class="secure-note">Безпечна оплата <span>Lemon Squeezy</span> · Картка, Google Pay, Apple Pay</div>
+    <div class="secure-note" id="t-secure">Безпечна оплата <span>Lemon Squeezy</span> · Картка, Google Pay, Apple Pay</div>
   </div>
 </div>
 
@@ -100,12 +100,41 @@ const params = new URLSearchParams(location.search);
 const uuid = params.get('uuid') || '';
 const country = params.get('country') || '';
 const plan = params.get('plan') || 'pro';
-document.addEventListener('DOMContentLoaded', () => { const el = document.getElementById('planPrice'); if (el) el.textContent = plan === 'easy' ? '€2' : '€5'; }); // 'easy' або 'pro'
-// Оновлюємо кількість фільтрів
+// Мова з localStorage (та сама що на головній)
+const _lang = localStorage.getItem('toe_lang') || 'en';
+const T = {
+  uk: {
+    back: '← повернутись', period: '/місяць',
+    f2: 'Новини, YouTube, Google', f3: 'Режим читання', f4: 'Мультимовність',
+    f5: 'Скасування підписки в будь-який момент',
+    btn: 'Оформити підписку',
+    secure: 'Безпечна оплата <span>Lemon Squeezy</span> · Картка, Google Pay, Apple Pay',
+    filters: (n) => n + ' Filters на день'
+  },
+  en: {
+    back: '← back', period: '/mo',
+    f2: 'News, YouTube, Google', f3: 'Reader mode', f4: 'Multilingual',
+    f5: 'Cancel anytime',
+    btn: 'Subscribe',
+    secure: 'Secure payment <span>Lemon Squeezy</span> · Card, Google Pay, Apple Pay',
+    filters: (n) => n + ' Filters per day'
+  }
+};
+const tr = T[_lang] || T.en;
 document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('filtersFeature')
-  if (el) el.textContent = (plan === 'easy' ? '50' : '150') + ' Filters на день'
-})
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  set('t-back', tr.back);
+  set('t-period', tr.period);
+  set('t-f2', tr.f2); set('t-f3', tr.f3); set('t-f4', tr.f4); set('t-f5', tr.f5);
+  set('t-btn', tr.btn);
+  const sec = document.getElementById('t-secure'); if (sec) sec.innerHTML = tr.secure;
+  const ff = document.getElementById('filtersFeature'); if (ff) ff.textContent = tr.filters(plan === 'easy' ? '50' : '150');
+});
+
+// Оновлюємо ціну/період в price-display
+document.addEventListener('DOMContentLoaded', () => {
+  const el = document.getElementById('planPrice'); if (el) el.textContent = plan === 'easy' ? '€2' : '€5';
+});
 
 function getPricing(c) {
   const entry = pricing[c] || pricing['DEFAULT'] || { amount: '2', currency: '€' };
@@ -116,7 +145,7 @@ function getPricing(c) {
 
 function applyPricing(c) {
   const p = getPricing(c);
-  document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '/місяць</span>';
+  document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + tr.period + '</span>';
   window._currentPricing = p;
 }
 
@@ -134,7 +163,7 @@ const pricing = {
 
 const p = pricing[country] || { amount: '2', currency: '€' };
 
-document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + '/місяць</span>';
+document.getElementById('priceAmount').innerHTML = p.amount + '<span style="font-size:22px;color:var(--muted)">' + p.currency + tr.period + '</span>';
 
 
 async function startCheckout() {
