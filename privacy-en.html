@@ -43,11 +43,12 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
   <p>On the Free plan:</p>
   <ul>
     <li><strong>Anonymous UUID</strong> — generated locally in your browser to identify the session.</li>
-    <li><strong>Country & region</strong> — determined automatically by IP address for correct local pricing.</li>
+    <li><strong>Country & region</strong> — determined automatically from a non-stored IP for correct local pricing.</li>
     <li><strong>Filter type</strong> — anonymized data about content type (news, YouTube, reviews).</li>
     <li><strong>Timestamp</strong> — date and time of the request.</li>
+    <li><strong>Page URL & text fragment</strong> — when you hover a headline, the page URL and a fragment of the article/subtitles are sent to our server to generate the summary. The URL and the generated summary are cached temporarily; the source text is processed and not retained after the summary is created.</li>
   </ul>
-  <p>We strictly <strong>do NOT collect</strong>: name, phone numbers, or exact IP address (only an irreversible hash), URLs of visited pages, or full content of articles or videos.</p>
+  <p>We strictly <strong>do NOT collect</strong>: your name, phone number, or exact IP address (only an irreversible hash is used). We do not track your full browsing history or build a profile of the pages you visit — data is processed only at the moment you actively request a summary.</p>
 
   <h2>2. How we use data</h2>
   <p>Data is used solely to operate the service:</p>
@@ -59,17 +60,18 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 
   <h2>3. Pro subscription & payments</h2>
   <ul>
-    <li>Payments are processed by the certified Stripe service.</li>
-    <li>During payment, Stripe collects your email and payment details.</li>
+    <li>Payments are processed by Lemon Squeezy (our Merchant of Record).</li>
+    <li>During payment, Lemon Squeezy collects your email and payment details.</li>
     <li>toEssence only stores your UUID and subscription status.</li>
-    <li>We have no access to your card or email stored in Stripe.</li>
+    <li>We have no access to your card details stored by Lemon Squeezy.</li>
   </ul>
 
   <h2>4. Third-party data sharing</h2>
   <ul>
-    <li><strong>OpenAI API</strong> — processes content text for summary generation. Data sent via the API is confidential, not stored for human review, and not used for AI model training.</li>
-    <li><strong>Supabase</strong> — secure cloud database in the EU region (EU-Central) for anonymous statistics.</li>
-    <li><strong>Stripe</strong> — international payment processing with the highest PCI-DSS security level.</li>
+    <li><strong>OpenAI API</strong> — processes the text fragment to generate the summary. Data sent via the API is confidential, not stored for human review, and not used for AI model training.</li>
+    <li><strong>Supadata</strong> — used to fetch public subtitles for YouTube videos you request a summary for.</li>
+    <li><strong>Supabase</strong> — secure cloud database (EU region) storing your UUID, subscription status, anonymous usage statistics, and a temporary cache of generated summaries.</li>
+    <li><strong>Lemon Squeezy</strong> — payment processing as Merchant of Record (PCI-DSS compliant).</li>
   </ul>
 
   <h2>5. Cookies & local storage</h2>
