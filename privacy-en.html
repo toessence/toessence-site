@@ -35,63 +35,67 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 </nav>
 <div class="content">
   <h1>Privacy Policy</h1>
-  <div class="date">Updated: May 2026</div>
+  <div class="date">Last Updated: May 2026</div>
 
-  <p>toEssence is built with a Privacy by Design approach. Data collection is minimized and information is never sold to third parties.</p>
+  <p>toEssence is built with a Privacy by Design approach. We minimize data collection, enforce strict data security, and <strong>never sell, rent, or trade your data to third parties for marketing or advertising purposes.</strong></p>
 
-  <h2>1. What data we collect</h2>
-  <p>On the Free plan:</p>
+  <h2>1. Introduction & Chrome Web Store Compliance</h2>
+  <p>To provide core functionality (generating summaries of articles, YouTube videos, and reviews), toEssence requires access to specific web page content. This data is processed strictly to deliver the service at your explicit request and is handled in full compliance with the Google Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
+
+  <h2>2. What Data We Collect & Process</h2>
+  <p>We only collect data that is strictly necessary for the extension's core functionality. On the Free plan:</p>
   <ul>
-    <li><strong>Anonymous UUID</strong> — generated locally in your browser to identify the session.</li>
-    <li><strong>Country & region</strong> — determined automatically from a non-stored IP for correct local pricing.</li>
-    <li><strong>Filter type</strong> — anonymized data about content type (news, YouTube, reviews).</li>
-    <li><strong>Timestamp</strong> — date and time of the request.</li>
-    <li><strong>Page URL & text fragment</strong> — when you hover a headline, the page URL and a fragment of the article/subtitles are sent to our server to generate the summary. The URL and the generated summary are cached temporarily; the source text is processed and not retained after the summary is created.</li>
+    <li><strong>Anonymous UUID</strong> — generated locally in your browser to identify your unique session and enforce usage limits without identifying you personally.</li>
+    <li><strong>Country & Region</strong> — automatically determined via a non-stored IP address to display localized pricing.</li>
+    <li><strong>Filter Type</strong> — anonymized information about the content type being processed (e.g., news, YouTube, reviews).</li>
+    <li><strong>Timestamp</strong> — the date and time of your request.</li>
+    <li><strong>Page URL & Text Fragment</strong> — when you explicitly request a summary (by hovering over a headline), the URL and a fragment of the article or subtitles are sent to our server. The URL and the generated summary are temporarily cached for performance; the source text fragment is processed instantly and not retained after the summary is created.</li>
   </ul>
-  <p>We strictly <strong>do NOT collect</strong>: your name, phone number, or exact IP address (only an irreversible hash is used). We do not track your full browsing history or build a profile of the pages you visit — data is processed only at the moment you actively request a summary.</p>
+  <p>We strictly <strong>do NOT collect</strong>: your name, phone number, or exact IP address (only an irreversible hash is used); your full browsing history or profiles of the pages you visit. Data is processed only at the moment you actively request a summary.</p>
 
-  <h2>2. How we use data</h2>
-  <p>Data is used solely to operate the service:</p>
+  <h2>3. How We Use Your Data</h2>
   <ul>
-    <li>Tracking and enforcing the free request limit (10 filters per day).</li>
-    <li>Anonymous usage statistics (active users count, feature popularity).</li>
-    <li>Adapting Pro pricing to the user's country.</li>
+    <li>Operating the service, including tracking and enforcing the free request limit (10 filters per day).</li>
+    <li>Generating anonymous usage statistics (e.g., active user counts, feature popularity) to improve the extension.</li>
+    <li>Adapting Pro subscription pricing to your geographic country.</li>
+  </ul>
+  <p><strong>Important:</strong> We do not use your personal or browsing data to personalize ads, create marketing profiles, or track you across the web.</p>
+
+  <h2>4. Pro Subscription & Payments</h2>
+  <p>Payments are securely processed by Lemon Squeezy (our Merchant of Record).</p>
+  <ul>
+    <li>During checkout, Lemon Squeezy collects your email and payment details.</li>
+    <li>toEssence only stores your anonymous UUID and your subscription status.</li>
+    <li>We have no access to your credit card or financial details stored by Lemon Squeezy.</li>
   </ul>
 
-  <h2>3. Pro subscription & payments</h2>
+  <h2>5. Third-Party Data Sharing</h2>
+  <p>We only share data with trusted service providers necessary to run the extension. We never sell your data.</p>
   <ul>
-    <li>Payments are processed by Lemon Squeezy (our Merchant of Record).</li>
-    <li>During payment, Lemon Squeezy collects your email and payment details.</li>
-    <li>toEssence only stores your UUID and subscription status.</li>
-    <li>We have no access to your card details stored by Lemon Squeezy.</li>
-  </ul>
-
-  <h2>4. Third-party data sharing</h2>
-  <ul>
-    <li><strong>OpenAI API</strong> — processes the text fragment to generate the summary. Data sent via the API is confidential, not stored for human review, and not used for AI model training.</li>
+    <li><strong>OpenAI API</strong> — processes text fragments to generate summaries. Data sent via the API is confidential, encrypted, not stored for human review, and never used for AI model training.</li>
     <li><strong>Supadata</strong> — used to fetch public subtitles for YouTube videos you request a summary for.</li>
-    <li><strong>Supabase</strong> — secure cloud database (EU region) storing your UUID, subscription status, anonymous usage statistics, and a temporary cache of generated summaries.</li>
-    <li><strong>Lemon Squeezy</strong> — payment processing as Merchant of Record (PCI-DSS compliant).</li>
+    <li><strong>Supabase</strong> — a secure cloud database (EU region) used to store your UUID, subscription status, anonymous usage statistics, and temporary summary caches.</li>
+    <li><strong>Lemon Squeezy</strong> — handles payment processing as a PCI-DSS compliant Merchant of Record.</li>
   </ul>
 
-  <h2>5. Cookies & local storage</h2>
-  <p>We do not use marketing or tracking cookies. UUID and interface settings are stored in browser local storage (Chrome Storage).</p>
+  <h2>6. Cookies & Local Storage</h2>
+  <p>We do not use any marketing or tracking cookies. Your anonymous UUID and interface settings are stored locally on your device using browser local storage (Chrome Storage).</p>
 
-  <h2>6. Retention & security</h2>
+  <h2>7. Data Retention & Security</h2>
   <ul>
-    <li>Detailed filter usage logs are automatically deleted after 90 days.</li>
-    <li>Aggregated anonymized statistics are retained indefinitely.</li>
-    <li>Data is encrypted in transit (HTTPS) and at rest (AES-256).</li>
+    <li><strong>Logs:</strong> detailed filter usage logs are automatically and permanently deleted after 90 days.</li>
+    <li><strong>Statistics:</strong> aggregated, fully anonymized statistics are retained indefinitely to monitor product growth.</li>
+    <li><strong>Security:</strong> all data is encrypted in transit using HTTPS (TLS) and at rest using AES-256 encryption.</li>
   </ul>
 
-  <h2>7. User rights (including GDPR)</h2>
-  <p>You have full control over your data. To request complete deletion of your information, email <a href="mailto:hello@toessence.net">hello@toessence.net</a> with your anonymous UUID (found in extension settings).</p>
+  <h2>8. User Rights (GDPR & CCPA Compliance)</h2>
+  <p>You retain full control over your data. Since we do not collect personal identifiers like emails for Free plan users, your data is linked entirely to your anonymous UUID. To request the complete deletion of your data, email us at <a href="mailto:hello@toessence.net">hello@toessence.net</a> providing your anonymous UUID (found in the extension settings).</p>
 
-  <h2>8. Changes to this policy</h2>
-  <p>We reserve the right to update this document. In case of significant changes, users will be notified via the extension interface or on the official website.</p>
+  <h2>9. Changes to This Policy</h2>
+  <p>We reserve the right to update this Privacy Policy to reflect changes in our practices or regulatory requirements. If significant changes are made, we will notify users through the extension interface or on our official website.</p>
 
-  <h2>9. Contact</h2>
-  <p>Privacy questions: <a href="mailto:hello@toessence.net">hello@toessence.net</a></p>
+  <h2>10. Contact Us</h2>
+  <p>If you have any questions about this Privacy Policy or our data practices, please contact us at: <a href="mailto:hello@toessence.net">hello@toessence.net</a></p>
 </div>
 <footer>© 2026 toessence.net</footer>
 <script>
