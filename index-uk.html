@@ -39,24 +39,20 @@ nav{position:sticky;top:0;background:rgba(250,249,246,.8);backdrop-filter:blur(1
 .lang span{color:rgba(0,0,0,.2)}
 
 /* MANIFESTO */
-.manifesto{padding:88px 0 64px;text-align:center}
+.manifesto{padding:88px 0 12px;text-align:center}
 .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:24px}
 .manifesto h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:500;line-height:1.08;letter-spacing:-.02em;margin-bottom:10px;color:var(--ink)}
 .manifesto .sub{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:40px}
 .manifesto-body{max-width:620px;margin:0 auto;text-align:center}
 .manifesto-body p{font-size:16px;color:#374151;margin-bottom:18px;font-weight:300;line-height:1.8}
 .manifesto-body p:first-child{font-size:17px}
-.hover-line{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:var(--green);margin-top:36px}
+.hover-line{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:var(--green);margin-top:32px;margin-bottom:0}
 
 /* VIDEO */
-.video-sec{padding:24px 0 80px}
+.video-sec{padding:4px 0 80px}
 .video-frame{max-width:780px;margin:0 auto;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s}
 .video-frame:hover{transform:translateY(-3px);box-shadow:0 36px 80px rgba(0,0,0,.1)}
-.play-btn{width:74px;height:74px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;transition:transform .2s}
-.video-frame:hover .play-btn{transform:scale(1.08)}
-.play-btn::after{content:'';border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:5px}
-.video-label{position:absolute;bottom:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-
+.video-frame:hover 
 /* PRICING */
 .pricing{padding:20px 0 100px}
 .pricing-head{text-align:center;margin-bottom:50px}
@@ -101,7 +97,6 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 <nav>
   <div class="nav-in">
     <div class="logo">to<em>E</em>ssence</div>
-    <div class="nav-tagline">Когнітивна безпека та цифрова гігієна</div>
     <div class="lang">
       <button id="l-en">EN</button>
       <span>|</span>
@@ -126,9 +121,8 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 <!-- VIDEO -->
 <section class="video-sec">
   <div class="wrap">
-    <div class="video-frame fade d3" id="videoFrame">
-      <div class="play-btn"></div>
-      <div class="video-label">Дивитись демо</div>
+    <div class="video-frame fade d3">
+      <video src="/toEssence.mp4" controls playsinline preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video>
     </div>
   </div>
 </section>
@@ -200,12 +194,6 @@ document.getElementById('l-uk').addEventListener('click', () => {
 function addChrome(){
   window.open('https://chrome.google.com/webstore', '_blank');
 }
-// Відео-плейсхолдер: підстав свій YouTube ID у CHANGE_ME
-document.getElementById('videoFrame').addEventListener('click', function(){
-  var id = 'CHANGE_ME';
-  if(id === 'CHANGE_ME'){ alert('Сюди вставиш своє відео (YouTube embed або файл)'); return; }
-  this.innerHTML = '<iframe width="100%" height="100%" style="border:0;border-radius:16px" src="https://www.youtube.com/embed/'+id+'?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
-});
 </script>
 
 </body>
