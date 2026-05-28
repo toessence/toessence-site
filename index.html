@@ -1,597 +1,204 @@
 <!DOCTYPE html>
-<!-- saved from url=(0022)https://toessence.net/ -->
-<html lang="uk" data-sumpeek-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>body {transition: opacity ease-in 0.2s; } 
-body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
-</style>
-
+<html lang="en">
+<head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="toEssence — AI фільтр для інтернету. Наводь курсор на заголовки, відео та відгуки — отримуй суть без кліків.">
-<title>toEssence — інфогігієна</title>
-<link rel="icon" href="https://toessence.net/favicon.ico">
-<link rel="apple-touch-icon" href="https://toessence.net/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com/">
-<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
-<link href="./toEssence — інфогігієна_files/css2" rel="stylesheet">
+<title>toEssence — Value Your Time</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#faf9f6;
+  --surface:#ffffff;
+  --ink:#1a1d23;
+  --muted:#6b7280;
+  --line:rgba(0,0,0,.08);
+  --green:#16a34a;
+  --green-soft:rgba(22,163,74,.07);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
 
-  :root {
-    --bg: #080a0f;
-    --bg2: #0d1018;
-    --border: rgba(255,255,255,.06);
-    --text: rgba(255,255,255,.82);
-    --muted: rgba(255,255,255,.35);
-    --green: #22c55e;
-    --green-dim: rgba(34,197,94,.1);
-    --green-border: rgba(34,197,94,.25);
-  }
+/* fade-in on load */
+.fade{opacity:0;transform:translateY(16px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+.fade.d1{animation-delay:.1s}.fade.d2{animation-delay:.25s}.fade.d3{animation-delay:.4s}.fade.d4{animation-delay:.55s}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
 
-  html { scroll-behavior: smooth; }
+/* NAV */
+nav{position:sticky;top:0;background:rgba(250,249,246,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:20}
+.nav-in{max-width:920px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--ink)}
+.logo em{color:var(--green);font-style:normal}
+.lang{display:flex;gap:2px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px}
+.lang button{background:none;border:none;cursor:pointer;padding:5px 9px;border-radius:6px;color:var(--muted);font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s}
+.lang button.active{color:var(--green)}
+.lang button:hover{color:var(--ink)}
+.lang span{color:rgba(0,0,0,.2)}
 
-  body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+/* MANIFESTO */
+.manifesto{padding:88px 0 64px;text-align:center}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:24px}
+.manifesto h1{font-family:'Playfair Display',serif;font-size:52px;font-weight:500;line-height:1.08;letter-spacing:-.02em;margin-bottom:10px;color:var(--ink)}
+.manifesto .sub{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:40px}
+.manifesto-body{max-width:620px;margin:0 auto;text-align:center}
+.manifesto-body p{font-size:16px;color:#374151;margin-bottom:18px;font-weight:300;line-height:1.8}
+.manifesto-body p:first-child{font-size:17px}
+.hover-line{text-align:center;font-family:'Playfair Display',serif;font-style:italic;font-size:22px;color:var(--green);margin-top:36px}
 
-  /* NAV */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 18px 48px;
-    transition: background .3s, border-color .3s;
-    border-bottom: 1px solid transparent;
-  }
-  nav.scrolled {
-    background: rgba(8,10,15,.95);
-    border-color: var(--border);
-    backdrop-filter: blur(12px);
-  }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
-  }
-  .nav-logo em { color: var(--green); font-style: normal; }
-  .btn-nav {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    color: var(--green);
-    border: 1px solid var(--green-border);
-    background: var(--green-dim);
-    padding: 8px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  .btn-nav:hover { background: rgba(34,197,94,.2); }
+/* VIDEO */
+.video-sec{padding:24px 0 80px}
+.video-frame{max-width:780px;margin:0 auto;aspect-ratio:16/9;background:var(--surface);border:1px solid var(--line);border-radius:16px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.06);cursor:pointer;transition:transform .25s,box-shadow .25s}
+.video-frame:hover{transform:translateY(-3px);box-shadow:0 36px 80px rgba(0,0,0,.1)}
+.play-btn{width:74px;height:74px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+.video-frame:hover .play-btn{transform:scale(1.08)}
+.play-btn::after{content:'';border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:5px}
+.video-label{position:absolute;bottom:20px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 
-  /* HERO */
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 20px 24px 40px;
-    position: relative;
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse 60% 50% at 50% 40%, rgba(34,197,94,.05) 0%, transparent 70%);
-    pointer-events: none;
-  }
-  .hero-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: .2em;
-    text-transform: uppercase;
-    color: var(--green);
-    border: 1px solid var(--green-border);
-    background: var(--green-dim);
-    padding: 5px 14px;
-    border-radius: 20px;
-    margin-bottom: 36px;
-    display: inline-block;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(52px, 8vw, 100px);
-    font-weight: 700;
-    line-height: 1.05;
-    color: #fff;
-    margin-bottom: 24px;
-    letter-spacing: -.02em;
-  }
-  .hero h1 em { font-style: italic; color: var(--green); }
-  .hero-sub {
-    font-size: 17px;
-    color: var(--muted);
-    max-width: 440px;
-    margin: 0 auto 48px;
-  }
-  .hero-btns {
-    display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 64px;
-  }
-  .btn-primary {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .06em;
-    background: var(--green);
-    color: #080a0f;
-    padding: 13px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  .btn-primary:hover { background: #16a34a; transform: translateY(-1px); }
-  .btn-ghost {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: .06em;
-    color: var(--muted);
-    padding: 13px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    border: 1px solid var(--border);
-    transition: all .2s;
-  }
-  .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,.2); }
+/* PRICING */
+.pricing{padding:20px 0 100px}
+.pricing-head{text-align:center;margin-bottom:50px}
+.pricing-head h2{font-family:'Playfair Display',serif;font-size:36px;font-weight:500;margin-bottom:12px}
+.pricing-head p{color:var(--muted);font-size:16px}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;margin:0 auto}
+.price{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:34px 28px;text-align:center;position:relative;transition:transform .2s,box-shadow .2s}
+.price:hover{transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.07)}
+.price.featured{border:2px solid var(--green)}
+.price-tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border-radius:14px}
+.price h3{font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px}
+.price .amount{font-family:'Playfair Display',serif;font-size:46px;color:var(--ink);line-height:1;margin-bottom:6px}
+.price .amount small{font-size:15px;color:var(--muted);font-family:'IBM Plex Sans'}
+.price ul{list-style:none;margin:24px 0;text-align:left}
+.price li{font-size:14px;color:#4b5563;padding:8px 0 8px 26px;position:relative}
+.price li::before{content:'✓';position:absolute;left:0;color:var(--green);font-weight:600}
+.price li.off{color:#b0b3b8}
+.price li.off::before{content:'×';color:#cbced3}
+.btn{display:block;width:100%;background:var(--green);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:500;padding:13px;border-radius:9px;border:none;cursor:pointer;transition:all .18s;letter-spacing:.03em}
+.btn:hover{background:#15803d;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--green);border:1px solid rgba(22,163,74,.3)}
+.btn-ghost:hover{background:var(--green-soft)}
 
-  /* DEMO CARD */
-  .demo-card {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 24px;
-    width: 430px;
-    text-align: left;
-    box-shadow: 0 40px 100px rgba(0,0,0,.7);
-  }
-  .demo-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .demo-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    font-weight: 700;
-    color: #fff;
-  }
-  .demo-logo em { color: var(--green); font-style: normal; }
-  .demo-dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
-    background: var(--green);
-    animation: pulse 2s ease-in-out infinite;
-  }
-  .demo-mag {
-    font-size: 16px;
-    animation: pulse 2s ease-in-out infinite;
-  }
-  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
-  .demo-item > svg, .demo-item > span:first-child { flex-shrink: 0; width: 26px; display: flex; justify-content: center; }
-  .demo-item {
-    margin-bottom: 14px;
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 9px;
-    font-size: 12.5px;
-    color: rgba(255,255,255,.8);
-    line-height: 1.5;
-    width: 100%;
-  }
-  .demo-item::before {
-    content: none;
-  }
-  .demo-foot {
-    margin-top: 14px;
-    padding-top: 10px;
-    border-top: 1px solid var(--border);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    letter-spacing: .06em;
-    color: rgba(255,255,255,.2);
-  }
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:var(--muted);font-size:13px}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:14px;font-family:'IBM Plex Mono',monospace;font-size:12px}
+.footer-links a:hover{color:var(--green)}
 
-  /* DIVIDER */
-  hr { border: none; border-top: 1px solid var(--border); margin: 0 48px; }
-
-  /* FEATURES LIST */
-  .features {
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-  }
-  .feature {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 22px 28px;
-    background: var(--bg2);
-    transition: background .2s;
-  }
-  .feature:hover { background: #111520; }
-  .feature-icon { font-size: 20px; flex-shrink: 0; }
-  .feature-text h3 {
-    font-size: 14px;
-    font-weight: 500;
-    color: #fff;
-    margin-bottom: 3px;
-  }
-  .feature-text p {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .features-wrap {
-    padding: 32px 24px;
-    max-width: 760px;
-    margin: 0 auto;
-  }
-
-  /* PRICING */
-  .pricing {
-    padding: 32px 24px;
-    max-width: 1000px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 16px;
-  }
-  .plan.easy {
-    border-color: rgba(59,130,246,.3);
-    background: linear-gradient(135deg, #0d1018 0%, #090f18 100%);
-  }
-  .plan.easy .plan-label { color: #60a5fa; }
-  .plan {
-    background: var(--bg2);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 20px 24px;
-    position: relative;
-  }
-  .plan.pro {
-    border-color: var(--green-border);
-    background: linear-gradient(135deg, #0d1018 0%, #091510 100%);
-  }
-  .plan-label {
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: .02em;
-    text-transform: none;
-    color: rgba(255,255,255,.6);
-    margin-bottom: 16px;
-  }
-  .plan.pro .plan-label { color: var(--green); }
-  .plan-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 40px;
-    font-weight: 700;
-    color: #fff;
-    line-height: 1;
-    margin-bottom: 8px;
-  }
-  .plan-desc {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 12px;
-    line-height: 1.6;
-  }
-  .plan-list {
-    list-style: none;
-    margin-bottom: 16px;
-  }
-  .plan-list li {
-    font-size: 13px;
-    color: rgba(255,255,255,.7);
-    padding: 4px 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .plan-list li:last-child { border: none; }
-  .chk { color: var(--green); font-size: 12px; }
-  .dsh { color: rgba(255,255,255,.2); }
-  .btn-plan {
-    display: block;
-    width: 100%;
-    text-align: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .06em;
-    padding: 8px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: all .2s;
-  }
-  .btn-free {
-    color: var(--muted);
-    border: 1px solid var(--border);
-  }
-  .btn-free:hover { color: #fff; border-color: rgba(255,255,255,.2); }
-  .btn-pro {
-    background: var(--green);
-    color: #080a0f;
-  }
-  .btn-pro:hover { background: #16a34a; }
-
-  /* FOOTER */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 24px 48px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 15px;
-    color: rgba(255,255,255,.3);
-    text-decoration: none;
-  }
-  .footer-logo em { color: var(--green); font-style: normal; }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-links a {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.2);
-    text-decoration: none;
-    transition: color .2s;
-  }
-  .footer-links a:hover { color: rgba(255,255,255,.5); }
-
-  @media (max-width: 640px) {
-    nav { padding: 16px 20px; }
-    hr { margin: 0 20px; }
-    .pricing { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 16px; text-align: center; }
-  }
+@media(max-width:760px){
+  .manifesto h1{font-size:36px}
+  .price-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
 
-<nav id="nav">
-  <a href="https://toessence.net/" class="nav-logo">to<em>E</em>ssence</a>
-  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
-    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">UA</button>
-    <span style="color:rgba(255,255,255,.2)">|</span>
-    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:rgba(255,255,255,.3);font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">EN</button>
+<nav>
+  <div class="nav-in">
+    <div class="logo">to<em>E</em>ssence</div>
+    <div class="lang">
+      <button id="l-en" class="active">EN</button>
+      <span>|</span>
+      <button id="l-uk">UA</button>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<div style="text-align:center;padding:40px 0 0"><div style="font-family:'Playfair Display',serif;font-size:64px;font-weight:400;color:#fff;letter-spacing:-.01em">Value Your <span style="color:#22c55e">Time.</span></div></div>
+<!-- MANIFESTO -->
+<header class="manifesto">
+  <div class="wrap">
+    <div class="eyebrow fade">Cognitive security &amp; digital hygiene</div>
+    <h1 class="fade d1">Value Your Time</h1>
+    <div class="sub fade d1">Project Mission</div>
+    <div class="manifesto-body fade d2">
+      <p>toEssence is a browser extension designed as a tool for cognitive security and digital hygiene. Its functionality addresses the problem of information overload caused by the continuous flow of low-quality and manipulative content online.</p>
+      <p>The system algorithm automatically filters incoming text, removing clickbait, emotional triggers and hidden manipulations, then generates a concise and structured summary within seconds.</p>
+      <p>This approach automates the process of initial information verification. Instead of passively consuming large volumes of texts and videos, users get the key points in seconds — helping reclaim control over their time, reduce mental fatigue and maintain focus on professional tasks.</p>
+    </div>
+    <div class="hover-line fade d3">Just hover and read.</div>
+  </div>
+</header>
 
-<div style="text-align:center;padding:4px 0 24px">
-  <div style="font-family:'Times New Roman',Times,serif;font-size:22px;font-weight:700;color:rgba(255,255,255,.28);margin-bottom:0px;letter-spacing:.04em;font-style:italic">BBC News &nbsp;·&nbsp; Deutsche Welle &nbsp;·&nbsp; The New York Times &nbsp;·&nbsp; Al Jazeera &nbsp;·&nbsp; Reuters</div>
-  <div style="font-family:'Times New Roman',Times,serif;font-size:18px;font-style:italic;color:rgba(255,255,255,.4)"><span data-i18n="media_tagline">Читайте світові медіа без жодних мовних бар'єрів</span></div>
-</div>
+<!-- VIDEO -->
+<section class="video-sec">
+  <div class="wrap">
+    <div class="video-frame fade d3" id="videoFrame">
+      <div class="play-btn"></div>
+      <div class="video-label">Watch the demo</div>
+    </div>
+  </div>
+</section>
 
 <!-- PRICING -->
-<div class="pricing" id="pricing">
-  <div class="plan">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between">
-      <div class="plan-label">Free</div>
-      <div class="plan-price" style="font-size:18px;margin:0;color:rgba(255,255,255,.4)">0</div>
+<section class="pricing">
+  <div class="wrap">
+    <div class="pricing-head">
+      <h2>Simple pricing</h2>
+      <p>Start free, upgrade when you need more</p>
     </div>
-    <ul class="plan-list">
-      <li><span class="chk">✓</span> <span data-i18n="free_f1">10 Filters на день</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="free_f2">Новини, Google</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="free_f4">Режим читання</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="free_f3">Мультимовність</span></li>
-    </ul>
-    <a href="https://chrome.google.com/webstore" class="btn-plan btn-free"><span data-i18n="free_btn">Встановити</span></a>
-  </div>
-  <div class="plan easy">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between">
-      <div class="plan-label">Easy</div>
-      <div class="plan-price" id="easyPriceMain" style="font-size:22px;margin:0">€2/міс</div>
+    <div class="price-grid">
+      <div class="price">
+        <h3>Free</h3>
+        <div class="amount">0<small>€</small></div>
+        <ul>
+          <li>10 filters per day</li>
+          <li>News, Google</li>
+          <li>Reader mode</li>
+          <li>Multilingual</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://chrome.google.com/webstore" target="_blank">Install</a>
+      </div>
+      <div class="price">
+        <h3>Easy</h3>
+        <div class="amount">2<small>€ / mo</small></div>
+        <ul>
+          <li>50 filters per day</li>
+          <li>News, YouTube, Google</li>
+          <li>Reader mode</li>
+          <li>Multilingual</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://toessence.net/pro.html?plan=easy">Get Easy</a>
+      </div>
+      <div class="price featured">
+        <span class="price-tag">Most popular</span>
+        <h3>Pro</h3>
+        <div class="amount">5<small>€ / mo</small></div>
+        <ul>
+          <li>150 filters per day</li>
+          <li>News, YouTube, Google</li>
+          <li>Reader mode</li>
+          <li>Multilingual</li>
+        </ul>
+        <a class="btn" href="https://toessence.net/pro.html?plan=pro">Get Pro</a>
+      </div>
     </div>
-    <ul class="plan-list">
-      <li><span class="chk">✓</span> <span data-i18n="easy_f1">50 Filters на день</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="easy_f2">Новини, YouTube, Google</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="easy_f4">Режим читання</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="easy_f3">Мультимовність</span></li>
-    </ul>
-    <a href="https://toessence.net/pro.html?plan=easy" class="btn-plan btn-pro" style="background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.4);color:#60a5fa"><span data-i18n="easy_btn">Перейти на Easy</span></a>
   </div>
-  <div class="plan pro">
-    <div style="display:flex;align-items:flex-start;justify-content:space-between">
-      <div class="plan-label">Pro</div>
-      <div class="plan-price" id="proPriceMain" style="font-size:22px;margin:0">€5/міс</div>
-    </div>
-    <ul class="plan-list">
-      <li><span class="chk">✓</span> <span data-i18n="pro_f1">150 Filters на день</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="pro_f2">Новини, YouTube, Google</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="pro_f4">Режим читання</span></li>
-      <li><span class="chk">✓</span> <span data-i18n="pro_f3">Мультимовність</span></li>
-    </ul>
-    <a href="https://toessence.net/pro.html?plan=pro" class="btn-plan btn-pro"><span data-i18n="pro_btn">Перейти на Pro</span></a>
-  </div>
-</div>
+</section>
 
-<script>
-  const nav = document.getElementById('nav')
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 20)
-  })
-</script>
-
-<footer style="border-top:1px solid rgba(255,255,255,.05);padding:16px 24px;">
-  <div style="display:inline-flex;gap:8px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,.35);width:100%;justify-content:center">© 2026 toEssence <span style="opacity:.4">·</span> <a href="/about.html" style="color:rgba(255,255,255,.2);text-decoration:none">About</a> <span style="opacity:.4">·</span> <a href="/contact.html" style="color:rgba(255,255,255,.2);text-decoration:none">Contact</a> <span style="opacity:.4">·</span> <a href="/privacy.html" style="color:rgba(255,255,255,.2);text-decoration:none">Privacy</a> <span style="opacity:.4">·</span> Made in Ukraine</div>
+<footer>
+  <div class="footer-links">
+    <a href="/privacy-en.html">Privacy</a>
+    <a href="/contact-en.html">Contact</a>
+    <a href="/about-en.html">About</a>
+  </div>
+  © 2026 toessence.net
 </footer>
 
-
 <script>
-(function() {
-  const PRICING = {
-    CH:{a:'14',c:'CHF'},LU:{a:'10',c:'€'},SG:{a:'12',c:'SGD'},US:{a:'8.5',c:'$'},
-    DK:{a:'59',c:'DKK'},NO:{a:'89',c:'NOK'},AU:{a:'13',c:'AU$'},IL:{a:'29',c:'₪'},
-    NL:{a:'7',c:'€'},QA:{a:'28',c:'QAR'},IE:{a:'6.5',c:'€'},DE:{a:'6.5',c:'€'},
-    GB:{a:'5',c:'£'},SE:{a:'68',c:'SEK'},BE:{a:'5.5',c:'€'},FI:{a:'5.5',c:'€'},
-    AT:{a:'5.5',c:'€'},CA:{a:'8.5',c:'CA$'},NZ:{a:'10',c:'NZ$'},FR:{a:'5.5',c:'€'},
-    KR:{a:'5800',c:'₩'},ES:{a:'4',c:'€'},IT:{a:'3.5',c:'€'},JP:{a:'580',c:'¥'},
-    CZ:{a:'84',c:'CZK'},PL:{a:'14',c:'zł'},HU:{a:'1000',c:'HUF'},PT:{a:'2.5',c:'€'},
-    GR:{a:'2',c:'€'},BG:{a:'4',c:'BGN'},RO:{a:'10',c:'RON'},TR:{a:'69',c:'₺'},
-    RS:{a:'210',c:'RSD'},MY:{a:'9',c:'MYR'},RU:{a:'160',c:'₽'},MX:{a:'28',c:'MXN'},
-    UA:{a:'5',c:'€'},IN:{a:'72',c:'₹'},VN:{a:'20500',c:'₫'},PH:{a:'37',c:'₱'},
-    ID:{a:'8500',c:'Rp'},PK:{a:'100',c:'₨'},NG:{a:'240',c:'₦'},AR:{a:'1300',c:'ARS'},
-    CL:{a:'1300',c:'CLP'},CO:{a:'3800',c:'COP'},KZ:{a:'580',c:'₸'},TH:{a:'44',c:'฿'},
-    EG:{a:'13',c:'EGP'},MA:{a:'9.5',c:'MAD'},KE:{a:'94',c:'KES'},ZA:{a:'54',c:'ZAR'},
-    SK:{a:'2.5',c:'€'},HR:{a:'3',c:'€'},LT:{a:'3',c:'€'},LV:{a:'2.5',c:'€'},
-    EE:{a:'3.5',c:'€'},SI:{a:'3',c:'€'},MT:{a:'3.5',c:'€'},CY:{a:'3.5',c:'€'},
-    BA:{a:'3',c:'BAM'},ME:{a:'2',c:'€'},MK:{a:'88',c:'MKD'},AL:{a:'140',c:'ALL'},
-    MD:{a:'27',c:'MDL'},BY:{a:'5',c:'BYN'},GE:{a:'3',c:'GEL'},AM:{a:'550',c:'AMD'},
-    AZ:{a:'1.5',c:'AZN'},UZ:{a:'12700',c:'UZS'},BR:{a:'5.5',c:'BRL'},PE:{a:'4.5',c:'PEN'},
-    BO:{a:'6',c:'BOB'},DO:{a:'72',c:'DOP'},CR:{a:'1100',c:'CRC'},UY:{a:'85',c:'UYU'},
-    CN:{a:'15',c:'CNY'},TW:{a:'110',c:'TWD'},JO:{a:'1',c:'JOD'},IQ:{a:'1500',c:'IQD'},
-    SA:{a:'15',c:'SAR'},AE:{a:'23',c:'AED'},KW:{a:'1.9',c:'KWD'},BH:{a:'1.7',c:'BHD'},
-    OM:{a:'1.9',c:'OMR'},LK:{a:'130',c:'LKR'},NP:{a:'56',c:'NPR'},BD:{a:'52',c:'BDT'},
-    TN:{a:'2',c:'TND'},DZ:{a:'83',c:'DZD'}
-  };
-  fetch('https://ipapi.co/json/')
-    .then(r => r.json())
-    .then(d => {
-      const p = PRICING[d.country_code] || {a:'2', c:'$'};
-      const el = document.getElementById('proPriceMain');
-      const desc = document.getElementById('proDescMain');
-      const _lang = localStorage.getItem('toe_lang') || 'en';
-      const period = _lang === 'en' ? '/mo' : '/міс';
-      if (el) el.textContent = p.a + ' ' + p.c + period;
-      // Easy price = ~33% of Pro
-      const easyEl = document.getElementById('easyPriceMain')
-      const easyAmt = Math.round(parseFloat(p.a) * 0.333)
-      if (easyEl) easyEl.textContent = easyAmt + ' ' + p.c + period;
-      if (desc) desc.textContent = '';
-      if (desc) desc.textContent = '';
-    })
-    .catch(() => {
-      const el = document.getElementById('proPriceMain');
-      const desc = document.getElementById('proDescMain');
-      const _lang2 = localStorage.getItem('toe_lang') || 'en';
-      const period2 = _lang2 === 'en' ? '/mo' : '/міс';
-      if (el) el.textContent = '€5' + period2;
-      if (desc) desc.textContent = '';
-    });
-})();
-</script>
-
-<script>
-const T = {
-  uk: {
-    slogan: 'Value Your <span style="color:#22c55e">Time.</span>',
-    heroSub: '',
-    free_desc: 'Без реєстрації та картки.<br>Просто встановіть.',
-    free_f1: '10 Filters на день',
-    free_f2: 'Новини, Google',
-    free_f3: 'Мультимовність',
-    free_f4: 'Режим читання',
-    free_btn: 'Встановити',
-    pro_desc: 'Від середнього доходу у вашій країні',
-    pro_f1: '150 Filters на день',
-    pro_f2: 'Новини, YouTube, Google',
-    pro_f3: 'Мультимовність',
-    pro_f4: 'Режим читання',
-    pro_btn: 'Перейти на Pro',
-    demo1: 'Суть статті за 2 секунди без переходу на сторінку',
-    demo2: 'Аналіз відео за субтитрами',
-    demo3: 'Короткий зміст без переходу за посиланням',
-    media_tagline: 'Читайте світові медіа без жодних мовних бар\'єрів',
-    easy_f1: '50 Filters на день',
-    easy_f2: 'Новини, YouTube, Google',
-    easy_f3: 'Мультимовність',
-    easy_f4: 'Режим читання',
-    easy_btn: 'Перейти на Easy',
-  },
-  en: {
-    slogan: 'Value Your <span style="color:#22c55e">Time.</span>',
-    free_desc: 'No registration or card.<br>Just install.',
-    free_f1: '10 Filters per day',
-    free_f2: 'News, Google',
-    free_f3: 'Multilingual',
-    free_f4: 'Reader mode',
-    free_btn: 'Install',
-    pro_desc: 'Based on average income in your country',
-    pro_f1: '150 Filters per day',
-    pro_f2: 'News, YouTube, Google',
-    pro_f3: 'Multilingual',
-    pro_f4: 'Reader mode',
-    pro_btn: 'Go Pro',
-    demo1: 'Article summary in 2 seconds without opening the page',
-    demo2: 'Video analysis by subtitles',
-    demo3: 'Quick summary without following the link',
-    media_tagline: 'Read global media without any language barriers',
-    easy_f1: '50 Filters per day',
-    easy_f2: 'News, YouTube, Google',
-    easy_f3: 'Multilingual',
-    easy_f4: 'Reader mode',
-    easy_btn: 'Go Easy',
-  }
-};
-
-function setLang(lang) {
-  const t = T[lang];
-  localStorage.setItem('toe_lang', lang);
-  // Switcher style
-  document.getElementById('btn-uk').style.color = lang === 'uk' ? '#22c55e' : 'rgba(255,255,255,.3)';
-  document.getElementById('btn-en').style.color = lang === 'en' ? '#22c55e' : 'rgba(255,255,255,.3)';
-  // Texts
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (t[key]) el.innerHTML = t[key];
-  });
-  // Update price period
-  const priceEl = document.getElementById('proPriceMain');
-  const easyEl2 = document.getElementById('easyPriceMain');
-  const period = lang === 'en' ? '/mo' : '/міс';
-  if (priceEl) {
-    priceEl.textContent = priceEl.textContent.replace(/\/mo|\/міс/, period);
-  }
-  if (easyEl2) {
-    easyEl2.textContent = easyEl2.textContent.replace(/\/mo|\/міс/, period);
-  }
+// Перемикач мови (UA веде на українську версію)
+document.getElementById('l-uk').addEventListener('click', () => {
+  window.location.href = '/index-uk.html';
+});
+// Кнопка Add to Chrome → посилання на Web Store (підстав свій після публікації)
+function addChrome(){
+  window.open('https://chrome.google.com/webstore', '_blank');
 }
-
-// Init
-const lang = localStorage.getItem('toe_lang') || 'en';
-document.addEventListener('DOMContentLoaded', () => setLang(lang));
+// Відео-плейсхолдер: підстав свій YouTube ID у CHANGE_ME
+document.getElementById('videoFrame').addEventListener('click', function(){
+  var id = 'CHANGE_ME';
+  if(id === 'CHANGE_ME'){ alert('Сюди вставиш своє відео (YouTube embed або файл)'); return; }
+  this.innerHTML = '<iframe width="100%" height="100%" style="border:0;border-radius:16px" src="https://www.youtube.com/embed/'+id+'?autoplay=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>';
+});
 </script>
-</body></html>
+
+</body>
+</html>
