@@ -29,6 +29,7 @@ a{color:inherit;text-decoration:none}
 /* NAV */
 nav{position:sticky;top:0;background:rgba(250,249,246,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:20}
 .nav-in{max-width:920px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.nav-tagline{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
 .logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--ink)}
 .logo em{color:var(--green);font-style:normal}
 .lang{display:flex;gap:2px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px}
@@ -87,14 +88,20 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 @media(max-width:760px){
   .manifesto h1{font-size:36px}
   .price-grid{grid-template-columns:1fr}
+  .nav-tagline{display:none}
 }
 </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
 <nav>
   <div class="nav-in">
     <div class="logo">to<em>E</em>ssence</div>
+    <div class="nav-tagline">Cognitive security &amp; digital hygiene</div>
     <div class="lang">
       <button id="l-en" class="active">EN</button>
       <span>|</span>
@@ -106,9 +113,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 <!-- MANIFESTO -->
 <header class="manifesto">
   <div class="wrap">
-    <div class="eyebrow fade">Cognitive security &amp; digital hygiene</div>
     <h1 class="fade d1">Value Your Time</h1>
-    <div class="sub fade d1">Project Mission</div>
     <div class="manifesto-body fade d2">
       <p>toEssence is a browser extension designed as a tool for cognitive security and digital hygiene. Its functionality addresses the problem of information overload caused by the continuous flow of low-quality and manipulative content online.</p>
       <p>The system algorithm automatically filters incoming text, removing clickbait, emotional triggers and hidden manipulations, then generates a concise and structured summary within seconds.</p>
@@ -131,10 +136,6 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 <!-- PRICING -->
 <section class="pricing">
   <div class="wrap">
-    <div class="pricing-head">
-      <h2>Simple pricing</h2>
-      <p>Start free, upgrade when you need more</p>
-    </div>
     <div class="price-grid">
       <div class="price">
         <h3>Free</h3>

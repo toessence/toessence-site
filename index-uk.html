@@ -29,6 +29,7 @@ a{color:inherit;text-decoration:none}
 /* NAV */
 nav{position:sticky;top:0;background:rgba(250,249,246,.8);backdrop-filter:blur(14px);border-bottom:1px solid var(--line);z-index:20}
 .nav-in{max-width:920px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.nav-tagline{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
 .logo{font-family:'Playfair Display',serif;font-size:21px;font-weight:600;color:var(--ink)}
 .logo em{color:var(--green);font-style:normal}
 .lang{display:flex;gap:2px;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px}
@@ -87,14 +88,20 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 @media(max-width:760px){
   .manifesto h1{font-size:36px}
   .price-grid{grid-template-columns:1fr}
+  .nav-tagline{display:none}
 }
 </style>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 
 <nav>
   <div class="nav-in">
     <div class="logo">to<em>E</em>ssence</div>
+    <div class="nav-tagline">Когнітивна безпека та цифрова гігієна</div>
     <div class="lang">
       <button id="l-en">EN</button>
       <span>|</span>
@@ -106,9 +113,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 <!-- MANIFESTO -->
 <header class="manifesto">
   <div class="wrap">
-    <div class="eyebrow fade">Когнітивна безпека та цифрова гігієна</div>
     <h1 class="fade d1">Цінуй свій час</h1>
-    <div class="sub fade d1">Мета проєкту</div>
     <div class="manifesto-body fade d2">
       <p>toEssence — це розширення для браузера, створене як інструмент когнітивної безпеки та цифрової гігієни. Його функціонал вирішує проблему інформаційного перевантаження, спричиненого безперервним потоком неякісного й маніпулятивного контенту в мережі.</p>
       <p>Алгоритм системи автоматично фільтрує вхідний текст, очищує його від клікбейту, емоційних тригерів і прихованих маніпуляцій, після чого за кілька секунд генерує стислий і структурований зміст.</p>
@@ -131,10 +136,6 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
 <!-- PRICING -->
 <section class="pricing">
   <div class="wrap">
-    <div class="pricing-head">
-      <h2>Прості тарифи</h2>
-      <p>Почни безкоштовно, оновлюй за потреби</p>
-    </div>
     <div class="price-grid">
       <div class="price">
         <h3>Free</h3>
