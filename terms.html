@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Умови використання — toEssence</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#faf9f6;--bg2:#ffffff;--border:rgba(0,0,0,.08);--text:#1a1d23;--muted:#6b7280;--green:#16a34a}
+body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300}
+a{color:var(--green);text-decoration:none}
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+.logo{font-family:'Playfair Display',serif;font-size:20px;color:#1a1d23;cursor:pointer;transition:opacity .18s}
+.logo:hover{opacity:.75}
+.logo em{color:var(--green);font-style:normal}
+.content{max-width:680px;margin:0 auto;padding:60px 24px}
+h1{font-family:'Playfair Display',serif;font-size:36px;font-weight:400;color:#1a1d23;margin-bottom:8px}
+.date{font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.1em;margin-bottom:48px}
+h2{font-size:16px;font-weight:500;color:#1a1d23;margin:32px 0 10px}
+p{font-size:14px;line-height:1.8;color:#4b5563;margin-bottom:12px}
+ul{padding-left:20px;margin-bottom:12px}
+li{font-size:14px;line-height:1.8;color:#4b5563;margin-bottom:4px}
+footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav>
+  <a class="logo" href="https://toessence.net/">to<em>E</em>ssence</a>
+  <div style="display:flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:11px">
+    <button onclick="setLang('uk')" id="btn-uk" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#22c55e;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">UA</button>
+    <span style="color:rgba(0,0,0,.2)">|</span>
+    <button onclick="setLang('en')" id="btn-en" style="background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:4px;color:#9ca3af;font-family:inherit;font-size:11px;letter-spacing:.05em;transition:all .2s">EN</button>
+  </div>
+</nav>
+<div class="content">
+  <h1>Умови використання</h1>
+  <div class="date">Оновлено: Червень 2026</div>
+
+  <p>Ці Умови використання регулюють користування браузерним розширенням та сервісом toEssence (далі — «Сервіс»). Встановлюючи або використовуючи Сервіс, ви погоджуєтеся з цими Умовами. Якщо ви не згодні, будь ласка, не користуйтеся Сервісом.</p>
+
+  <h2>1. Опис Сервісу</h2>
+  <p>toEssence — це браузерне розширення, яке генерує стислі описи вмісту вебсторінок (новинних статей, відео YouTube, книжкових та інших матеріалів) за вашим явним запитом, а також надає режим читання для повних статей. Описи створюються автоматично за допомогою технологій штучного інтелекту.</p>
+
+  <h2>2. Тарифи та підписка</h2>
+  <ul>
+    <li><strong>Безкоштовний тариф (Free):</strong> надає обмежену кількість запитів на день.</li>
+    <li><strong>Платна підписка:</strong> оформлюється на <strong>щомісячній</strong> основі та надає підвищені ліміти використання.</li>
+  </ul>
+  <p>Підписка автоматично поновлюється щомісяця, доки ви її не скасуєте. Ви можете скасувати підписку будь-коли через сторінку керування підпискою; доступ збережеться до кінця сплаченого періоду.</p>
+
+  <h2>3. Оплата</h2>
+  <p>Обробка платежів здійснюється через <strong>Paddle.com</strong>, який виступає Продавцем-обліковцем (Merchant of Record). Оформлюючи підписку, ви також погоджуєтеся з умовами та політикою Paddle. Усі ціни вказані у відповідній валюті та можуть включати застосовні податки.</p>
+
+  <h2>4. Повернення коштів</h2>
+  <p>Ми пропонуємо повернення коштів протягом <strong>14 днів</strong> з моменту оплати. Деталі викладено в нашій <a href="/refund.html">Політиці повернення коштів</a>.</p>
+
+  <h2>5. Прийнятне використання</h2>
+  <p>Ви погоджуєтеся не використовувати Сервіс для будь-яких незаконних цілей і не намагатися обходити обмеження, втручатися в роботу Сервісу, здійснювати зворотну розробку, перевантажувати інфраструктуру автоматизованими запитами чи порушувати права інтелектуальної власності.</p>
+
+  <h2>6. Інтелектуальна власність</h2>
+  <p>Усі права на Сервіс, його код, дизайн та бренд належать toEssence. Згенеровані описи надаються вам для особистого використання. Сервіс не претендує на права щодо вихідного вмісту вебсторінок, який належить його відповідним власникам.</p>
+
+  <h2>7. Відмова від гарантій</h2>
+  <p>Сервіс надається «як є». Описи генеруються автоматично та можуть містити неточності. Ми не гарантуємо їхню повну достовірність і не несемо відповідальності за рішення, прийняті на основі згенерованих описів. Сервіс не замінює ознайомлення з першоджерелом.</p>
+
+  <h2>8. Обмеження відповідальності</h2>
+  <p>У максимально дозволеній законом мірі toEssence не несе відповідальності за будь-які непрямі, випадкові чи побічні збитки, що виникли внаслідок використання або неможливості використання Сервісу.</p>
+
+  <h2>9. Зміни до Умов</h2>
+  <p>Ми залишаємо за собою право оновлювати ці Умови. У разі істотних змін ми повідомимо користувачів через інтерфейс розширення або на офіційному сайті. Подальше користування Сервісом означає згоду зі зміненими Умовами.</p>
+
+  <h2>10. Контакти</h2>
+  <p>З питань щодо цих Умов звертайтеся: <a href="mailto:hello@toessence.net">hello@toessence.net</a></p>
+</div>
+<footer>© 2026 toessence.net</footer>
+<script>
+function setLang(lang) {
+  localStorage.setItem('toe_lang', lang);
+  if (lang === 'en') window.location.href = '/terms-en.html';
+}
+document.addEventListener('DOMContentLoaded', () => {
+  const lang = localStorage.getItem('toe_lang') || 'uk';
+  if (lang === 'en') window.location.href = '/terms-en.html';
+});
+</script>
+</body>
+</html>
