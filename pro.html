@@ -6,6 +6,15 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>toEssence Pro — необмежені Filters</title>
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script>
+  // Ініціалізація Paddle.js клієнтським токеном (публічний, не секрет).
+  window.addEventListener('load', function () {
+    if (window.Paddle) {
+      Paddle.Initialize({ token: 'live_ae5189c82f390fe6a2b4b010158' });
+    }
+  });
+</script>
 <link rel="icon" type="image/x-icon" href="https://toessence.net/favicon.ico">
 <link rel="preconnect" href="https://fonts.googleapis.com/">
 <link href="./toEssence Pro — необмежені Filters_files/css2" rel="stylesheet">
@@ -171,8 +180,8 @@ async function startCheckout() {
   btn.textContent = 'Завантаження...'
   btn.disabled = true
 
-  // Беремо uuid з chrome storage якщо доступний
-  let uuid = localStorage.getItem('toe_uuid') || 'web_' + Math.random().toString(36).slice(2)
+  // uuid приходить з розширення через URL (?uuid=...). Якщо нема — генеруємо web-варіант.
+  const uuid = params.get('uuid') || ('web_' + Math.random().toString(36).slice(2))
 
   try {
     const res = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
@@ -184,8 +193,11 @@ async function startCheckout() {
       body: JSON.stringify({ uuid, plan })
     })
     const data = await res.json()
-    if (data.url) {
-      window.location.href = data.url
+    if (data.transactionId) {
+      // Відкриваємо Paddle overlay-checkout за ID транзакції
+      Paddle.Checkout.open({ transactionId: data.transactionId })
+      btn.textContent = tr.btn
+      btn.disabled = false
     } else {
       throw new Error(data.error || 'Помилка')
     }
@@ -195,6 +207,7 @@ async function startCheckout() {
   }
 }
 </script>
+
 
 
 </body></html>
