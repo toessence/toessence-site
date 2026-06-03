@@ -10,7 +10,7 @@
 :root{--bg:#faf9f6;--bg2:#ffffff;--border:rgba(0,0,0,.08);--text:#1a1d23;--muted:#6b7280;--green:#16a34a;--gborder:rgba(22,163,74,.25)}
 body{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-weight:300;min-height:100vh;display:flex;flex-direction:column}
 a{color:var(--green);text-decoration:none}
-nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border)}
+nav{padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(250,249,246,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);z-index:50}
 .logo{font-family:'Playfair Display',serif;font-size:20px;color:#1a1d23;cursor:pointer;transition:opacity .18s}
 .logo:hover{opacity:.75}
 .logo em{color:var(--green);font-style:normal}
