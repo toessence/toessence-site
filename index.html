@@ -244,7 +244,7 @@ function addChrome(){
     if(email.indexOf('@')<0){show('Please enter a valid email.','err');return;}
     btn.disabled=true;show('Sending\u2026','ok');
     fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/contact',{
-      method:'POST',headers:{'Content-Type':'application/json'},
+      method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzdHFwdnZ4aWZ0Z3BweG56cHp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1Nzk2NjcsImV4cCI6MjA5NDE1NTY2N30.g4yGHVjyjBJhZw6VjpGHMJTQ7AGHHoxahYhVDSOMhTg','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzdHFwdnZ4aWZ0Z3BweG56cHp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1Nzk2NjcsImV4cCI6MjA5NDE1NTY2N30.g4yGHVjyjBJhZw6VjpGHMJTQ7AGHHoxahYhVDSOMhTg'},
       body:JSON.stringify({name:name,email:email,message:msg})
     }).then(function(r){return r.json();}).then(function(j){
       btn.disabled=false;
