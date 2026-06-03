@@ -87,6 +87,22 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
   .price-grid{grid-template-columns:1fr}
   .nav-tagline{display:none}
 }
+
+/* CONTACT FORM */
+.contact-section{padding:60px 0 80px;background:var(--surface)}
+.contact-wrap{max-width:560px;margin:0 auto;padding:0 24px;text-align:center}
+.contact-wrap h2{font-family:'Playfair Display',serif;font-size:32px;font-weight:500;color:var(--ink);margin-bottom:10px}
+.contact-wrap .csub{font-size:15px;color:var(--muted);margin-bottom:32px;line-height:1.6}
+.contact-form{display:flex;flex-direction:column;gap:14px;text-align:left}
+.contact-form input,.contact-form textarea{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:10px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink);box-sizing:border-box;transition:border-color .15s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--green)}
+.contact-form textarea{resize:vertical;min-height:120px}
+.contact-form button{padding:14px;background:var(--green);color:#fff;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;transition:opacity .15s;font-family:inherit}
+.contact-form button:hover{opacity:.9}
+.contact-form button:disabled{opacity:.5;cursor:default}
+.contact-msg{font-size:14px;margin-top:6px;min-height:20px;text-align:center}
+.contact-msg.ok{color:var(--green)}
+.contact-msg.err{color:#dc2626}
 </style>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
@@ -169,6 +185,21 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
   </div>
 </section>
 
+<!-- CONTACT FORM -->
+<section class="contact-section">
+  <div class="contact-wrap">
+    <h2>Get in touch</h2>
+    <p class="csub">Have a question, business proposal, or found a bug? Write to us — we value your time and respond as quickly as possible.</p>
+    <div class="contact-form">
+      <input type="text" id="cfName" placeholder="Your name" maxlength="100">
+      <input type="email" id="cfEmail" placeholder="your@email.com" maxlength="150">
+      <textarea id="cfMsg" placeholder="Your message" maxlength="5000"></textarea>
+      <button id="cfBtn">Send</button>
+      <div class="contact-msg" id="cfMsgBox"></div>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-links">
     <a href="/privacy-en.html">Privacy</a>
@@ -199,5 +230,30 @@ function addChrome(){
 }
 </script>
 
+<script>
+(function(){
+  var btn=document.getElementById('cfBtn');
+  if(!btn)return;
+  var box=document.getElementById('cfMsgBox');
+  function show(t,k){box.textContent=t;box.className='contact-msg '+k;}
+  btn.addEventListener('click',function(){
+    var name=(document.getElementById('cfName').value||'').trim();
+    var email=(document.getElementById('cfEmail').value||'').trim();
+    var msg=(document.getElementById('cfMsg').value||'').trim();
+    if(!name||!email||!msg){show('Please fill in all fields.','err');return;}
+    if(email.indexOf('@')<0){show('Please enter a valid email.','err');return;}
+    btn.disabled=true;show('Sending\u2026','ok');
+    fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/contact',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name:name,email:email,message:msg})
+    }).then(function(r){return r.json();}).then(function(j){
+      btn.disabled=false;
+      if(j&&j.ok){show('Thank you! Your message has been sent.','ok');
+        document.getElementById('cfName').value='';document.getElementById('cfEmail').value='';document.getElementById('cfMsg').value='';
+      }else{show('Something went wrong. Please try again.','err');}
+    }).catch(function(){btn.disabled=false;show('Something went wrong. Please try again.','err');});
+  });
+})();
+</script>
 </body>
 </html>
