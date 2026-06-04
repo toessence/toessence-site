@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>toEssence — Value Your Time</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+<script>
+  window.addEventListener('load', function () {
+    if (window.Paddle) Paddle.Initialize({ token: 'live_ae5189c82f390fe6a2b4b010158' });
+  });
+</script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -167,7 +173,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
           <li>Reader mode</li>
           <li>Multilingual</li>
         </ul>
-        <a class="btn btn-ghost" href="https://toessence.net/pro.html?plan=easy">Get Easy</a>
+        <button class="btn btn-ghost" onclick="buyPlan('easy')">Get Easy</button>
       </div>
       <div class="price featured">
         <span class="price-tag">Most popular</span>
@@ -179,7 +185,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
           <li>Reader mode</li>
           <li>Multilingual</li>
         </ul>
-        <a class="btn" href="https://toessence.net/pro.html?plan=pro">Get Pro</a>
+        <button class="btn" onclick="buyPlan('pro')">Get Pro</button>
       </div>
     </div>
   </div>
@@ -254,6 +260,30 @@ function addChrome(){
     }).catch(function(){btn.disabled=false;show('Something went wrong. Please try again.','err');});
   });
 })();
+</script>
+<script>
+// Пряме відкриття Paddle при кліку на тариф (без проміжної сторінки).
+// Ідентифікація користувача — за email, який він введе у формі Paddle.
+async function buyPlan(plan) {
+  try {
+    const res = await fetch('https://xstqpvvxiftgppxnzpzv.supabase.co/functions/v1/create-checkout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhzdHFwdnZ4aWZ0Z3BweG56cHp2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg1Nzk2NjcsImV4cCI6MjA5NDE1NTY2N30.g4yGHVjyjBJhZw6VjpGHMJTQ7AGHHoxahYhVDSOMhTg'
+      },
+      body: JSON.stringify({ uuid: 'web_' + Math.random().toString(36).slice(2), plan: plan })
+    })
+    const data = await res.json()
+    if (data.transactionId && window.Paddle) {
+      Paddle.Checkout.open({ transactionId: data.transactionId })
+    } else {
+      alert('Error. Please try again.')
+    }
+  } catch (e) {
+    alert('Error. Please try again.')
+  }
+}
 </script>
 </body>
 </html>
