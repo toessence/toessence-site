@@ -46,7 +46,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
   <p>We only collect data that is strictly necessary for the extension's core functionality:</p>
   <ul>
     <li><strong>Anonymous UUID</strong> — generated locally in your browser to identify your unique session and enforce usage limits without identifying you personally.</li>
-    <li><strong>Filter counter & date</strong> — the number of filters (summary requests) used today and your local date, so we can enforce the daily limit (10 filters per day on the Free plan) and reset it at midnight.</li>
+    <li><strong>Filter counter & date</strong> — the number of filters (summary requests) used today and your local date, so we can enforce your plan's daily limit (for example, 10 filters per day on the Free plan) and reset it at midnight.</li>
     <li><strong>Plan</strong> — your current subscription tier (free, easy, or pro).</li>
     <li><strong>Email</strong> — collected <strong>for paid users only</strong>, during plan activation. It is used to link your paid subscription to the extension and to restore it after a reinstall. We do not collect emails for free users.</li>
     <li><strong>Page URL & Text Fragment</strong> — when you explicitly request a summary (by hovering over a headline), the URL and a fragment of the article are sent to our server to generate the summary. <strong>The source article text is not stored</strong> — it is processed instantly and discarded once the summary is created. The URL and the finished summary may be temporarily cached for performance optimization.</li>
@@ -55,7 +55,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
 
   <h2>3. How We Use Your Data</h2>
   <ul>
-    <li>Operating the service, including tracking and enforcing the free request limit (10 filters per day).</li>
+    <li>Operating the service, including tracking and enforcing the daily filter limit of your plan.</li>
     <li>Generating summaries of articles at your request.</li>
     <li>Linking and restoring a paid subscription (for paid users, by email).</li>
     <li>Generating anonymous, aggregated statistics (total user counts, feature popularity) to improve the extension.</li>
@@ -79,6 +79,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
     <li><strong>Paddle</strong> — handles payment processing as a PCI-DSS compliant Merchant of Record.</li>
     <li><strong>Resend</strong> — an email delivery service, used solely to send the one-time activation code to your email.</li>
   </ul>
+  <p>Some of these providers are based outside the EU (including in the USA). Cross-border transfers to them are carried out on a lawful basis — under Standard Contractual Clauses (SCCs) and Data Processing Addenda (DPAs) that ensure a level of protection consistent with the GDPR.</p>
 
   <h2>6. Cookies & Local Storage</h2>
   <p>We do not use any marketing or tracking cookies. Your anonymous UUID and interface settings are stored locally on your device using browser local storage (Chrome Storage).</p>
@@ -86,12 +87,13 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
   <h2>7. Data Retention & Security</h2>
   <ul>
     <li><strong>Logs:</strong> technical request usage logs are automatically and permanently deleted after 90 days.</li>
+    <li><strong>Subscription data:</strong> the data of an active subscription (anonymous UUID, email, and plan status) is retained for the entire period you use the service and is deleted within 30 days after the subscription ends or upon your deletion request.</li>
     <li><strong>Statistics:</strong> aggregated, fully anonymized statistics are retained indefinitely to monitor product growth.</li>
     <li><strong>Security:</strong> all data is encrypted in transit using HTTPS (TLS) and at rest using AES-256 encryption.</li>
   </ul>
 
   <h2>8. User Rights (GDPR & CCPA Compliance)</h2>
-  <p>You retain full control over your data. For Free users, your data is linked only to an anonymous UUID. For paid users, your data is also linked to the email you used at checkout. To request the complete deletion of your data, email us at <a href="mailto:hello@toessence.net">hello@toessence.net</a> and provide your anonymous UUID (found in the extension settings) or your subscription email.</p>
+  <p>You retain full control over your data. For Free users, your data is linked only to an anonymous UUID. For paid users, your data is also linked to the email you used at checkout. To request the complete deletion of your data, email us at <a href="mailto:hello@toessence.net">hello@toessence.net</a> or use the contact form on our website, and provide your anonymous UUID (found in the extension settings) or your subscription email.</p>
 
   <h2>9. Changes to This Policy</h2>
   <p>We reserve the right to update this Privacy Policy to reflect changes in our practices or regulatory requirements. If significant changes are made, we will notify users through the extension interface or on our official website.</p>
