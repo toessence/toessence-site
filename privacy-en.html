@@ -40,7 +40,7 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
   <p>toEssence is built with a Privacy by Design approach. We minimize data collection, enforce strict data security, and <strong>never sell, rent, or trade your data to third parties for marketing or advertising purposes.</strong> By installing and using the extension, you agree to this Privacy Policy.</p>
 
   <h2>1. Introduction & Chrome Web Store Compliance</h2>
-  <p>To provide core functionality (generating summaries of articles and YouTube videos), toEssence requires access to specific web page content. This data is processed strictly to deliver the service at your explicit request and is handled in full compliance with the Google Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
+  <p>To provide core functionality (generating summaries of articles and other page text), toEssence requires access to specific web page content. This data is processed strictly to deliver the service at your explicit request and is handled in full compliance with the Google Chrome Web Store User Data Policy, including the Limited Use requirements.</p>
 
   <h2>2. What Data We Collect & Process</h2>
   <p>We only collect data that is strictly necessary for the extension's core functionality:</p>
@@ -49,20 +49,20 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
     <li><strong>Filter counter & date</strong> — the number of filters (summary requests) used today and your local date, so we can enforce the daily limit (10 filters per day on the Free plan) and reset it at midnight.</li>
     <li><strong>Plan</strong> — your current subscription tier (free, easy, or pro).</li>
     <li><strong>Email</strong> — collected <strong>for paid users only</strong>, during plan activation. It is used to link your paid subscription to the extension and to restore it after a reinstall. We do not collect emails for free users.</li>
-    <li><strong>Page URL & Text Fragment</strong> — when you explicitly request a summary (by hovering over a headline), the URL and a fragment of the article or subtitles are sent to our server to generate the summary. <strong>The source article text is not stored</strong> — it is processed instantly and discarded once the summary is created. The URL and the finished summary may be temporarily cached for performance optimization.</li>
+    <li><strong>Page URL & Text Fragment</strong> — when you explicitly request a summary (by hovering over a headline), the URL and a fragment of the article are sent to our server to generate the summary. <strong>The source article text is not stored</strong> — it is processed instantly and discarded once the summary is created. The URL and the finished summary may be temporarily cached for performance optimization.</li>
   </ul>
   <p><strong>We strictly do NOT collect or store:</strong> your name, phone number, your IP address, or country (in our databases); your full browsing history or profiles of the pages you visit; article text after the summary is generated. Data is processed only at the moment you actively request a summary.</p>
 
   <h2>3. How We Use Your Data</h2>
   <ul>
     <li>Operating the service, including tracking and enforcing the free request limit (10 filters per day).</li>
-    <li>Generating summaries of articles and videos at your request.</li>
+    <li>Generating summaries of articles at your request.</li>
     <li>Linking and restoring a paid subscription (for paid users, by email).</li>
     <li>Generating anonymous, aggregated statistics (total user counts, feature popularity) to improve the extension.</li>
   </ul>
   <p><strong>Important:</strong> We do not use your data to personalize ads, create marketing profiles, or track you across the web.</p>
 
-  <h2>4. Pro Subscription & Payments</h2>
+  <h2>4. Paid Subscription & Payments</h2>
   <p>Payments are securely processed by Paddle, our Merchant of Record.</p>
   <ul>
     <li>During checkout, Paddle collects your email and payment details.</li>
@@ -75,7 +75,6 @@ footer{border-top:1px solid var(--border);padding:20px 48px;text-align:center;fo
   <p>We only share data with trusted service providers that are necessary to run the extension. We never sell your data.</p>
   <ul>
     <li><strong>OpenAI API</strong> — processes text fragments to generate summaries. Data transmitted via the API is confidential, encrypted, not stored for human review, and never used for AI model training.</li>
-    <li><strong>Supadata</strong> — used to fetch public subtitles for YouTube videos you request a summary for.</li>
     <li><strong>Supabase</strong> — a secure cloud database (EU region) used to store your UUID, plan, email (for paid users), filter counter, and temporary summary caches.</li>
     <li><strong>Paddle</strong> — handles payment processing as a PCI-DSS compliant Merchant of Record.</li>
     <li><strong>Resend</strong> — an email delivery service, used solely to send the one-time activation code to your email.</li>

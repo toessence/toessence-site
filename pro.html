@@ -5,7 +5,7 @@ body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relati
 </style>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>toEssence Pro — необмежені Filters</title>
+<title>toEssence Pro</title>
 <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
 <script>
   // Ініціалізація Paddle.js клієнтським токеном (публічний, не секрет).
@@ -80,9 +80,9 @@ footer{border-top:1px solid var(--border);padding:20px 48px;display:flex;justify
     </div>
 
     <div class="features">
-      <div class="feature" id="filtersFeature">150 Filters на день</div>
-      <div class="feature" id="t-f2">Новини, YouTube, Google</div>
-    <div class="feature" id="t-f3">Режим читання</div>
+      <div class="feature" id="filtersFeature">150 фільтрів на день</div>
+      <div class="feature" id="t-f2">Будь-який сайт</div>
+    <div class="feature" id="t-f3">Персональна ліцензія</div>
       <div class="feature" id="t-f4">Мультимовність</div>
       <div class="feature" id="t-f5">Скасування підписки в будь-який момент</div>
     </div>
@@ -114,19 +114,19 @@ const _lang = localStorage.getItem('toe_lang') || 'en';
 const T = {
   uk: {
     back: '← повернутись', period: '/місяць',
-    f2: 'Новини, YouTube, Google', f3: 'Режим читання', f4: 'Мультимовність',
+    f2: 'Будь-який сайт', f3: 'Персональна ліцензія', f4: 'Мультимовність',
     f5: 'Скасування підписки в будь-який момент',
     btn: 'Оформити підписку',
     secure: 'Безпечна оплата <span>Paddle</span> · Картка, Google Pay, Apple Pay',
-    filters: (n) => n + ' Filters на день'
+    filters: (n) => n + ' фільтрів на день'
   },
   en: {
     back: '← back', period: '/mo',
-    f2: 'News, YouTube, Google', f3: 'Reader mode', f4: 'Multilingual',
+    f2: 'Any website', f3: 'Personal license', f4: 'Multilingual',
     f5: 'Cancel anytime',
     btn: 'Subscribe',
     secure: 'Secure payment <span>Paddle</span> · Card, Google Pay, Apple Pay',
-    filters: (n) => n + ' Filters per day'
+    filters: (n) => n + ' filters per day'
   }
 };
 const tr = T[_lang] || T.en;
