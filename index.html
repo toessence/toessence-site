@@ -93,6 +93,9 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
   .manifesto h1{font-size:36px}
   .price-grid{grid-template-columns:1fr}
   .nav-tagline{display:none}
+  /* Футер: на вузькому екрані переносимо посилання й даємо бокові поля, щоб нічого не вилазило за край */
+  footer{padding:32px 16px}
+  .footer-links{flex-wrap:wrap;gap:12px 18px;padding:0 8px}
 }
 
 /* CONTACT FORM */
@@ -164,7 +167,7 @@ footer{border-top:1px solid var(--line);padding:38px 0;text-align:center;color:v
           <li>10 filters per day</li>
           <li>Multilingual</li>
         </ul>
-        <a class="btn btn-ghost" href="https://chrome.google.com/webstore" target="_blank">Install</a>
+        <a class="btn btn-ghost" href="https://chrome.google.com/webstore" target="_blank" rel="noopener noreferrer">Install</a>
       </div>
       <div class="price">
         <h3>EASY</h3>
@@ -232,7 +235,7 @@ document.getElementById('l-en').addEventListener('click', () => {
 });
 // Кнопка Add to Chrome → посилання на Web Store (підстав свій після публікації)
 function addChrome(){
-  window.open('https://chrome.google.com/webstore', '_blank');
+  window.open('https://chrome.google.com/webstore', '_blank', 'noopener');
 }
 </script>
 
