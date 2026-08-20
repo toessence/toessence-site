@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://toessence.net/</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://toessence.net/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://toessence.net/index-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://toessence.net/"/>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/index-uk.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://toessence.net/"/>
+    <xhtml:link rel="alternate" hreflang="uk" href="https://toessence.net/index-uk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://toessence.net/"/>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/pro</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/about.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/about-en.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/contact.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/contact-en.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/privacy</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/privacy-en.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/terms</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/terms-en.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/refund.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://toessence.net/refund-en.html</loc>
+    <lastmod>2026-08-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+</urlset>
